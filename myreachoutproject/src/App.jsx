@@ -1,10 +1,10 @@
 import MainLayout from "./layouts/MainLayout";
-import Cart from "./pages/Cart";
+import Search from "./pages/Search";
 
 function App() {
   return (
     <MainLayout>
-      <Cart />
+      <Search />
     </MainLayout>
   );
 }
