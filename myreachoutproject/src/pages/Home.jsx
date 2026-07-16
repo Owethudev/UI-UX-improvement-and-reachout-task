@@ -1,7 +1,11 @@
 // This page is the entry point for the homepage foundation.
 // It composes the hero section and keeps the page easy to extend with more sections.
 
+// This page composes the hero, trust highlights, and the featured products grid.
+// It keeps the homepage visually structured while remaining easy to extend.
+
 import Hero from "../components/home/Hero";
+import FeaturedProducts from "../components/home/FeaturedProducts";
 import PageContainer from "../components/layout/PageContainer";
 
 const highlights = [
@@ -30,6 +34,8 @@ export default function Home() {
           </div>
         </PageContainer>
       </section>
+
+      <FeaturedProducts />
     </>
   );
 }
