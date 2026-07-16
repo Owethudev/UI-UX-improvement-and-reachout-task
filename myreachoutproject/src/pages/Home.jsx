@@ -4,6 +4,7 @@
 // This page composes the hero, trust highlights, and the featured products grid.
 // It keeps the homepage visually structured while remaining easy to extend.
 
+import Brands from "../components/home/Brands";
 import Hero from "../components/home/Hero";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import PageContainer from "../components/layout/PageContainer";
@@ -35,6 +36,7 @@ export default function Home() {
         </PageContainer>
       </section>
 
+      <Brands />
       <FeaturedProducts />
     </>
   );
