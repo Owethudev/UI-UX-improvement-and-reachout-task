@@ -1,5 +1,14 @@
-function PageContainer({ children }) {
-  return <main style={{ flex: 1, padding: '2rem 1rem' }}>{children}</main>
-}
+// I create a reusable page container.
+// Every page can use this instead of rewriting spacing.
 
-export default PageContainer
+export default function PageContainer({ children }) {
+  return (
+
+    <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+      {children}
+
+    </div>
+
+  );
+}
