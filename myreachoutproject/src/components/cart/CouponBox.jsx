@@ -24,11 +24,7 @@ export default function CouponBox() {
           placeholder="Enter code"
           className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-[#111111] outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20"
         />
-<<<<<<< Updated upstream
         <button type="submit" className="rounded-full bg-[#111111] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#D4AF37] hover:text-[#111111]">
-=======
-        <button type="button" className="rounded-2xl bg-[#111111] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#D4AF37] hover:text-[#111111]">
->>>>>>> Stashed changes
           Apply
         </button>
       </form>

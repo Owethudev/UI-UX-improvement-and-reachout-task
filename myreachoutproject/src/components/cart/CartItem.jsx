@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
 import { useCart } from "../../context/CartContext";
 
-=======
->>>>>>> Stashed changes
 export default function CartItem({ item }) {
   const { updateQuantity, removeFromCart } = useCart();
 
@@ -16,7 +13,6 @@ export default function CartItem({ item }) {
             <h3 className="text-lg font-semibold text-[#111111]">{item.title}</h3>
             <p className="mt-1 text-sm text-[#4b5563]">{item.subtitle}</p>
           </div>
-<<<<<<< Updated upstream
           <p className="text-lg font-semibold text-[#111111]">${(item.price * item.quantity).toLocaleString()}</p>
         </div>
 
@@ -25,16 +21,6 @@ export default function CartItem({ item }) {
             <button type="button" onClick={() => updateQuantity(item.id, -1)} className="h-6 w-6 rounded-full bg-white text-lg leading-none">−</button>
             <span className="min-w-5 text-center">{item.quantity}</span>
             <button type="button" onClick={() => updateQuantity(item.id, 1)} className="h-6 w-6 rounded-full bg-white text-lg leading-none">+</button>
-=======
-          <p className="text-lg font-semibold text-[#111111]">R {item.price.toLocaleString()}</p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 rounded-full border border-black/10 bg-[#f7f7f2] px-3 py-2 text-sm text-[#4b5563] shadow-sm">
-            <button type="button" className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-lg leading-none text-[#111111]">−</button>
-            <span className="min-w-5 text-center font-semibold text-[#111111]">{item.quantity}</span>
-            <button type="button" className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-lg leading-none text-[#111111]">+</button>
->>>>>>> Stashed changes
           </div>
           <button type="button" onClick={() => removeFromCart(item.id)} className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
             Remove

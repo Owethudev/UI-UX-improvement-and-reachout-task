@@ -16,12 +16,8 @@ export default function Button({
 }) {
   return (
     <button
-<<<<<<< Updated upstream
       type={type}
       className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-lg ${variants[variant]} ${className}`}
-=======
-      className={`inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold tracking-[0.02em] transition-all duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/50 ${variants[variant]} ${className}`}
->>>>>>> Stashed changes
       {...props}
     >
       {children}
