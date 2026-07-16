@@ -23,7 +23,7 @@ export default function Cart() {
             <p className="mx-auto mt-3 max-w-lg text-base leading-8 text-[#4b5563]">
               Choose a featured device to add it to your bag and continue to checkout.
             </p>
-            <Link to="/" className="mt-6 inline-flex rounded-full bg-[#111111] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#D4AF37] hover:text-[#111111]">
+            <Link to="/" className="mt-6 inline-flex rounded-full bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#e0bc45] hover:shadow-[0_14px_36px_rgba(212,175,55,0.28)]">
               Browse products
             </Link>
           </div>

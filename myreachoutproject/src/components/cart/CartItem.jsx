@@ -13,7 +13,7 @@ export default function CartItem({ item }) {
             <h3 className="text-lg font-semibold text-[#111111]">{item.title}</h3>
             <p className="mt-1 text-sm text-[#4b5563]">{item.subtitle}</p>
           </div>
-          <p className="text-lg font-semibold text-[#111111]">${(item.price * item.quantity).toLocaleString()}</p>
+          <p className="text-lg font-semibold text-[#111111]">R{(item.price * item.quantity).toLocaleString()}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-3">

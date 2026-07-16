@@ -24,7 +24,7 @@ export default function CouponBox() {
           placeholder="Enter code"
           className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-[#111111] outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20"
         />
-        <button type="submit" className="rounded-full bg-[#111111] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#D4AF37] hover:text-[#111111]">
+        <button type="submit" className="rounded-full bg-[#D4AF37] px-4 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#e0bc45] hover:shadow-[0_14px_36px_rgba(212,175,55,0.28)]">
           Apply
         </button>
       </form>

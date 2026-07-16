@@ -52,15 +52,20 @@ export default function ProductCard({ product }) {
           <span>Free delivery</span>
         </div>
 
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-6 flex items-center justify-between gap-2">
           <div>
             <p className="text-xs uppercase tracking-[0.24em] text-[#4b5563]">From</p>
-            <p className="text-xl font-bold text-[#111111]">${product.price.toLocaleString()}</p>
+            <p className="text-xl font-bold text-[#111111]">R{product.price.toLocaleString()}</p>
           </div>
 
-          <Button variant="outline" className="rounded-full px-4 py-2.5 text-sm hover:-translate-y-0.5" onClick={handleBuyNow}>
-            Buy now
-          </Button>
+          <div className="flex flex-wrap justify-end gap-2">
+            <Button variant="gold" className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5" onClick={() => addToCart(product, 1)}>
+              Add to cart
+            </Button>
+            <Button variant="outline" className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5" onClick={handleBuyNow}>
+              Buy now
+            </Button>
+          </div>
         </div>
       </div>
     </article>

@@ -37,7 +37,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold uppercase tracking-[0.24em] text-white">Visit</h3>
             <ul className="mt-4 space-y-3 text-sm text-white/70">
-              <li className="flex items-center gap-2"><MapPin size={16} className="text-[#D4AF37]" /> 22 King Street, Melbourne</li>
+              <li className="flex items-center gap-2"><MapPin size={16} className="text-[#D4AF37]" /> 12 Electron Close , Kya Sand Randburg, Johannesburg South Africa 2163</li>
               <li className="flex items-center gap-2"><Truck size={16} className="text-[#D4AF37]" /> Next-day delivery</li>
               <li className="flex items-center gap-2"><ShieldCheck size={16} className="text-[#D4AF37]" /> 2-year service coverage</li>
             </ul>

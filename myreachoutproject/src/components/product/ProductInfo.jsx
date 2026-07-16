@@ -27,7 +27,7 @@ export default function ProductInfo({ product }) {
         <div className="flex items-end justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.24em] text-[#4b5563]">From</p>
-            <p className="mt-1 text-3xl font-semibold text-[#111111]">${product.price.toLocaleString()}</p>
+            <p className="mt-1 text-3xl font-semibold text-[#111111]">R{product.price.toLocaleString()}</p>
           </div>
           <span className="rounded-full bg-[#D4AF37]/15 px-3 py-1 text-sm font-semibold text-[#111111]">
             Free delivery

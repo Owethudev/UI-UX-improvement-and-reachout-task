@@ -5,12 +5,14 @@
 // The homepage will read this data to build the category grid.
 // ------------------------------------------------------------
 
-import phones from "../assets/images/categories/phones.webp";
-import televisions from "../assets/images/categories/televisions.webp";
-import gaming from "../assets/images/categories/gaming.webp";
-import computers from "../assets/images/categories/computers.webp";
-import kitchen from "../assets/images/categories/kitchen.webp";
 import appliances from "../assets/images/categories/appliances.webp";
+import computers from "../assets/images/categories/computers.webp";
+import furniture from "../assets/images/categories/furniture.webp";
+import gaming from "../assets/images/categories/gaming.webp";
+import kitchen from "../assets/images/categories/kitchen.webp";
+import phones from "../assets/images/categories/phones.webp";
+import sports from "../assets/images/categories/sports.webp";
+import televisions from "../assets/images/categories/televisions.webp";
 
 export const categories = [
   {
@@ -48,5 +50,17 @@ export const categories = [
     title: "Home Appliances",
     description: "Thoughtful essentials that elevate modern living spaces.",
     image: appliances,
+  },
+  {
+    id: 7,
+    title: "Furniture",
+    description: "Comfortable, refined pieces that bring calm and character to everyday spaces.",
+    image: furniture,
+  },
+  {
+    id: 8,
+    title: "Sports",
+    description: "Performance-ready gear for training, wellness, and weekend adventures.",
+    image: sports,
   },
 ];

@@ -11,16 +11,16 @@ function Checkout() {
       <PageContainer>
         <div className="mx-auto max-w-2xl rounded-[2rem] border border-black/10 bg-white p-8 text-center shadow-[0_18px_50px_rgba(17,17,17,0.06)]">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Checkout</p>
-          <h1 className="mt-3 text-3xl font-semibold text-[#111111] sm:text-4xl">Your order is confirmed.</h1>
+          <h1 className="mt-3 text-3xl font-semibold text-[#111111] sm:text-4xl">Payment gateway is coming soon.</h1>
           <p className="mt-4 text-base leading-8 text-[#4b5563]">
-            Thanks for shopping with MegaMall. A confirmation email is on its way and your premium electronics will be delivered soon.
+            Your order is safe in the cart while we finish the payment experience. We will connect secure checkout soon.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button variant="gold" className="justify-center px-6 py-3.5" onClick={() => navigate("/")}>
-              Continue shopping
+            <Button variant="gold" className="justify-center px-6 py-3.5" onClick={() => navigate("/cart")}>
+              Take me back to cart
             </Button>
-            <Button variant="outline" className="justify-center px-6 py-3.5" onClick={() => navigate("/wishlist")}>
-              View wishlist
+            <Button variant="outline" className="justify-center px-6 py-3.5" onClick={() => navigate("/")}>
+              Continue shopping
             </Button>
           </div>
         </div>
@@ -29,4 +29,4 @@ function Checkout() {
   );
 }
 
-export default Checkout
+export default Checkout;

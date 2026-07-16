@@ -1,5 +1,5 @@
 export function formatCurrency(amount) {
-  return `$${amount.toFixed(2)}`
+  return `R${amount.toFixed(2)}`
 }
 
 export default formatCurrency
