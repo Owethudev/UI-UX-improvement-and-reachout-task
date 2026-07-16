@@ -1,24 +1,10 @@
-// ------------------------------------------------------------
-// Button.jsx
-// ------------------------------------------------------------
-// I am the project's reusable button component.
-// Every button in the application should use me.
-// If another developer wants to change button styles,
-// they only need to update this file.
-// ------------------------------------------------------------
+// This reusable button keeps the UI consistent across the homepage.
+// Another developer can add new variants here without touching every call site.
 
-import React from "react";
-
-// I store all button styles in one object.
 const variants = {
-  primary:
-    "bg-black text-white hover:bg-yellow-600",
-
-  gold:
-    "bg-yellow-500 text-black hover:bg-yellow-400",
-
-  outline:
-    "border border-black text-black hover:bg-black hover:text-white",
+  primary: "bg-[#111111] text-white hover:bg-[#D4AF37] hover:text-[#111111]",
+  gold: "bg-[#D4AF37] text-[#111111] hover:bg-[#c79f2b]",
+  outline: "border border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white",
 };
 
 export default function Button({
@@ -29,18 +15,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`
-        px-6
-        py-3
-        rounded-xl
-        font-semibold
-        transition-all
-        duration-300
-        shadow-sm
-        hover:shadow-lg
-        ${variants[variant]}
-        ${className}
-      `}
+      className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-lg ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

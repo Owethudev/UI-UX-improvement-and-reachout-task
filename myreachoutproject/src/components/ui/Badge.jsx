@@ -1,5 +1,10 @@
-function Badge({ children }) {
-  return <span style={{ display: 'inline-block', padding: '0.25rem 0.5rem', background: '#fef3c7', color: '#92400e', borderRadius: '999px' }}>{children}</span>
-}
+// This badge is used for sales and featured product labels.
+// It gives the product cards a premium retail feel.
 
-export default Badge
+export default function Badge({ children }) {
+  return (
+    <span className="inline-flex rounded-full bg-[#111111] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+      {children}
+    </span>
+  );
+}
