@@ -1,14 +1,10 @@
-// I create a reusable page container.
-// Every page can use this instead of rewriting spacing.
+// This wrapper keeps page spacing consistent across the entire experience.
+// Another developer can reuse it anywhere without redefining padding or width.
 
 export default function PageContainer({ children }) {
   return (
-
-    <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
       {children}
-
     </div>
-
   );
 }

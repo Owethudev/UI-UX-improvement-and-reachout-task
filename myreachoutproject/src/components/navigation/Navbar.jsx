@@ -1,73 +1,33 @@
-import React from "react";
+// This navbar provides the premium top-level experience for the store.
+// It is intentionally simple so it can be reused and extended later.
 
 import PageContainer from "../layout/PageContainer";
 
+const links = ["Home", "Products", "Categories", "Deals"];
+
 export default function Navbar() {
+  return (
+    <nav className="bg-white/95">
+      <PageContainer>
+        <div className="flex h-20 items-center justify-between gap-4">
+          <a href="/" className="flex items-center gap-2 text-lg font-black tracking-[0.24em] uppercase">
+            <span className="text-[#111111]">Mega</span>
+            <span className="text-[#D4AF37]">Mall</span>
+          </a>
 
-    return (
+          <div className="hidden items-center gap-8 text-sm font-semibold text-[#4b5563] lg:flex">
+            {links.map((item) => (
+              <a key={item} href="/" className="transition hover:text-[#D4AF37]">
+                {item}
+              </a>
+            ))}
+          </div>
 
-        <nav className="border-b bg-white shadow-sm">
-
-            <PageContainer>
-
-                <div className="h-20 flex items-center justify-between">
-
-                    <h1 className="text-3xl font-black tracking-wide">
-
-                        <span className="text-black">
-
-                            Mega
-
-                        </span>
-
-                        <span className="text-yellow-600">
-
-                            Mall
-
-                        </span>
-
-                    </h1>
-
-                    <div className="hidden lg:flex gap-8 font-medium">
-
-                        <a href="/" className="hover:text-yellow-600">
-
-                            Home
-
-                        </a>
-
-                        <a href="/" className="hover:text-yellow-600">
-
-                            Products
-
-                        </a>
-
-                        <a href="/" className="hover:text-yellow-600">
-
-                            Categories
-
-                        </a>
-
-                        <a href="/" className="hover:text-yellow-600">
-
-                            Deals
-
-                        </a>
-
-                    </div>
-
-                    <button className="bg-black text-white px-5 py-3 rounded-lg hover:bg-yellow-600 transition">
-
-                        Sign In
-
-                    </button>
-
-                </div>
-
-            </PageContainer>
-
-        </nav>
-
-    )
-
+          <button className="rounded-full border border-[#111111] px-5 py-2.5 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#111111] hover:text-white">
+            Explore Deals
+          </button>
+        </div>
+      </PageContainer>
+    </nav>
+  );
 }
