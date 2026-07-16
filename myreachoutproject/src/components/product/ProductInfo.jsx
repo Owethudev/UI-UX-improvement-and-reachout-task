@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 import Button from "../ui/Button";
 import Rating from "../ui/Rating";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductInfo({ product }) {
+  const navigate = useNavigate();
+  const { addToCart, toggleWishlist, isWishlisted } = useCart();
+  const saved = isWishlisted(product.id);
+
   return (
     <div className="space-y-6">
       <div>
@@ -34,11 +41,14 @@ export default function ProductInfo({ product }) {
           <span>Includes warranty, support, and easy returns.</span>
         </div>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <Button variant="gold" className="flex-1 justify-center rounded-full px-5 py-3.5">
+          <Button variant="gold" className="flex-1 justify-center rounded-full px-5 py-3.5" onClick={() => addToCart(product, 1)}>
             Add to cart
           </Button>
-          <Button variant="outline" className="flex-1 justify-center rounded-full px-5 py-3.5">
-            Save for later
+          <Button variant="outline" className="flex-1 justify-center rounded-full px-5 py-3.5" onClick={() => {
+            toggleWishlist(product);
+            navigate("/wishlist");
+          }}>
+            {saved ? "Saved" : "Save for later"}
           </Button>
         </div>
       </div>

@@ -1,11 +1,23 @@
 // This component renders a premium product card.
 // It keeps the UI reusable and easy to extend with new product details.
 
+import { useNavigate } from "react-router-dom";
+
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 import Rating from "../ui/Rating";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductCard({ product }) {
+  const navigate = useNavigate();
+  const { addToCart, toggleWishlist, isWishlisted } = useCart();
+  const wishlistActive = isWishlisted(product.id);
+
+  const handleBuyNow = () => {
+    addToCart(product, 1);
+    navigate("/cart");
+  };
+
   return (
     <article className="group overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)] motion-safe:transform-gpu">
       <div className="relative">
@@ -19,7 +31,11 @@ export default function ProductCard({ product }) {
           <Badge>{product.badge}</Badge>
         </div>
 
-        <button className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl text-[#111111] shadow-md transition hover:scale-105 hover:text-[#D4AF37] focus-visible:outline-[#D4AF37]">
+        <button
+          type="button"
+          onClick={() => toggleWishlist(product)}
+          className={`absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full ${wishlistActive ? "bg-[#D4AF37] text-white" : "bg-white/90 text-[#111111]"} shadow-md transition hover:scale-105 hover:text-[#D4AF37] focus-visible:outline-[#D4AF37]`}
+        >
           ♡
         </button>
       </div>
@@ -42,7 +58,7 @@ export default function ProductCard({ product }) {
             <p className="text-xl font-bold text-[#111111]">${product.price.toLocaleString()}</p>
           </div>
 
-          <Button variant="outline" className="rounded-full px-4 py-2.5 text-sm hover:-translate-y-0.5">
+          <Button variant="outline" className="rounded-full px-4 py-2.5 text-sm hover:-translate-y-0.5" onClick={handleBuyNow}>
             Buy now
           </Button>
         </div>

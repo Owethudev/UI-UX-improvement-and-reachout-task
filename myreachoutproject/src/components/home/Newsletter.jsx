@@ -1,6 +1,15 @@
+import { useState } from "react";
+
 import PageContainer from "../layout/PageContainer";
 
 function Newsletter() {
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setStatus("Thanks for subscribing. We’ll send curated deals soon.");
+  };
+
   return (
     <section className="py-16 sm:py-20">
       <PageContainer>
@@ -17,7 +26,7 @@ function Newsletter() {
                 Join our newsletter for curated launches, limited deals, and expert recommendations tailored to your next upgrade.
               </p>
 
-              <form className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={handleSubmit}>
                 <label className="sr-only" htmlFor="newsletter-email">
                   Email address
                 </label>
@@ -34,6 +43,7 @@ function Newsletter() {
                   Subscribe
                 </button>
               </form>
+              {status ? <p className="mt-3 text-sm text-[#D4AF37]">{status}</p> : null}
             </div>
 
             <div className="relative mx-auto flex w-full max-w-md items-center justify-center">

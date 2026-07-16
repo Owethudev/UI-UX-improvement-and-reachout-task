@@ -1,6 +1,8 @@
 // This section showcases the most important product categories with large lifestyle imagery.
 // The data is supplied from the shared categories file so the section can evolve easily.
 
+import { Link } from "react-router-dom";
+
 import PageContainer from "../layout/PageContainer";
 import CategoryCard from "./CategoryCard";
 import { categories } from "../../data/categories";
@@ -18,9 +20,9 @@ export default function Categories() {
               Find the right tech for every moment.
             </h2>
           </div>
-          <a href="/" className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
+          <Link to="/search" className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
             Browse all
-          </a>
+          </Link>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

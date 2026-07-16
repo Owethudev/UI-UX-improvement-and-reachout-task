@@ -1,6 +1,8 @@
 // This hero section introduces the redesigned storefront with a premium headline and CTA.
 // Another developer can extend it by swapping in a new image or changing the featured copy.
 
+import { Link } from "react-router-dom";
+
 import PageContainer from "../layout/PageContainer";
 import heroImage from "../../assets/images/hero/hero-banner.webp";
 
@@ -24,18 +26,18 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/"
+              <Link
+                to="/search"
                 className="inline-flex items-center justify-center rounded-full bg-[#111111] px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#D4AF37] hover:text-[#111111]"
               >
                 Explore Deals
-              </a>
-              <a
-                href="/"
+              </Link>
+              <Link
+                to="/wishlist"
                 className="inline-flex items-center justify-center rounded-full border border-[#111111] px-7 py-3.5 text-sm font-semibold text-[#111111] transition duration-300 hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
               >
                 View Collections
-              </a>
+              </Link>
             </div>
           </div>
 

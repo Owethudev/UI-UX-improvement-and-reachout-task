@@ -11,10 +11,12 @@ export default function Button({
   children,
   variant = "primary",
   className = "",
+  type = "button",
   ...props
 }) {
   return (
     <button
+      type={type}
       className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-lg ${variants[variant]} ${className}`}
       {...props}
     >

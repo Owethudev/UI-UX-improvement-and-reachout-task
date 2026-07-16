@@ -1,6 +1,8 @@
 // This section displays a premium product grid for the homepage.
 // It uses shared mock data and reusable UI primitives for a consistent presentation.
 
+import { Link } from "react-router-dom";
+
 import PageContainer from "../layout/PageContainer";
 import ProductCard from "../product/ProductCard";
 import { featuredProducts } from "../../data/featuredProducts";
@@ -18,9 +20,9 @@ export default function FeaturedProducts() {
               Modern essentials for a smarter home.
             </h2>
           </div>
-          <a href="/" className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
+          <Link to="/search" className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
             View all
-          </a>
+          </Link>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
