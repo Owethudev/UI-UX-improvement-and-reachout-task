@@ -1,10 +1,10 @@
 import MainLayout from "./layouts/MainLayout";
-import Wishlist from "./pages/Wishlist";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <MainLayout>
-      <Wishlist />
+      <Cart />
     </MainLayout>
   );
 }
