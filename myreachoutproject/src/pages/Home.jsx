@@ -7,6 +7,7 @@
 import Brands from "../components/home/Brands";
 import Hero from "../components/home/Hero";
 import FeaturedProducts from "../components/home/FeaturedProducts";
+import Newsletter from "../components/home/Newsletter";
 import PageContainer from "../components/layout/PageContainer";
 import TrustSection from "../components/home/TrustSection";
 
@@ -40,6 +41,7 @@ export default function Home() {
       <Brands />
       <TrustSection />
       <FeaturedProducts />
+      <Newsletter />
     </>
   );
 }
