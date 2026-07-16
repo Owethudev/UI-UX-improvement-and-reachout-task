@@ -31,6 +31,18 @@ export default function Navbar() {
     return () => window.clearTimeout(timer);
   }, [itemCount]);
 
+  useEffect(() => {
+    if (!mobileDropdownOpen) return;
+
+    const handlePointerDown = (event) => {
+      if (event.target.closest("[data-mobile-nav-menu]")) return;
+      setMobileDropdownOpen(false);
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [mobileDropdownOpen]);
+
   return (
     <nav className="border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
@@ -54,29 +66,31 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex flex-1 items-center justify-end gap-2 overflow-x-auto lg:hidden">
+          <div className="flex flex-1 items-center justify-end gap-2 overflow-visible lg:hidden">
             {mobilePrimaryLinks.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-[#D4AF37]"
+                className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:text-[#D4AF37]"
               >
                 {item.label}
               </Link>
             ))}
 
             {mobileDropdownLinks.length > 0 && (
-              <div className="relative">
+              <div className="relative z-50" data-mobile-nav-menu>
                 <button
                   type="button"
+                  aria-expanded={mobileDropdownOpen}
+                  aria-haspopup="menu"
                   onClick={() => setMobileDropdownOpen((prev) => !prev)}
-                  className="rounded-full border border-white/10 px-3 py-2 text-sm font-semibold text-white/90 transition hover:border-[#D4AF37] hover:bg-white/10 hover:text-[#D4AF37]"
+                  className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:text-[#D4AF37]"
                 >
                   More
                 </button>
 
                 {mobileDropdownOpen && (
-                  <div className="absolute right-0 top-full mt-2 min-w-[10rem] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
+                  <div className="absolute right-0 top-full z-[60] mt-2 min-w-[10rem] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
                     {mobileDropdownLinks.map((item) => (
                       <Link
                         key={item.label}
