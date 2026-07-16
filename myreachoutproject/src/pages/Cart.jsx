@@ -7,7 +7,7 @@ import OrderSummary from "../components/cart/OrderSummary";
 import { useCart } from "../context/CartContext";
 
 export default function Cart() {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
 
   return (
     <section className="bg-[#f7f7f2] py-24 sm:py-28">
@@ -30,6 +30,15 @@ export default function Cart() {
         ) : (
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-4">
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={clearCart}
+                  className="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+                >
+                  Clear cart
+                </button>
+              </div>
               {cartItems.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}

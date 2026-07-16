@@ -17,7 +17,8 @@ export default function ProductCard({ product }) {
 
   const handleBuyNow = () => {
     addToCart(product, 1);
-    navigate("/cart");
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    navigate("/cart", { replace: false });
   };
 
   const handleCardToggle = () => {
@@ -27,6 +28,12 @@ export default function ProductCard({ product }) {
   const handleActionClick = (event, callback) => {
     event.stopPropagation();
     callback();
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, 1);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    navigate("/cart", { replace: false });
   };
 
   return (
@@ -81,7 +88,7 @@ export default function ProductCard({ product }) {
             <Button
               variant="gold"
               className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5"
-              onClick={(event) => handleActionClick(event, () => addToCart(product, 1))}
+              onClick={(event) => handleActionClick(event, handleAddToCart)}
             >
               Add to cart
             </Button>

@@ -17,7 +17,7 @@ export default function ComingSoon() {
             <Link to="/" className="rounded-full bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#e0bc45] hover:shadow-[0_14px_36px_rgba(212,175,55,0.28)]">
               Back to home
             </Link>
-            <Link to="/search" className="rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:bg-[#fff8e8] hover:text-[#111111]">
+            <Link to="/products" className="rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:bg-[#fff8e8] hover:text-[#111111]">
               Explore what’s available now
             </Link>
           </div>

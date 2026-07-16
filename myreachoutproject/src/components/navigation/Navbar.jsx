@@ -7,10 +7,10 @@ import { useCart } from "../../context/CartContext";
 const links = [
   { label: "Home", to: "/" },
   { label: "Search", to: "/search" },
-  { label: "clothing", to: "/sale" },
   { label: "Deals", to: "/products" },
+  { label: "clothing", to: "/sale" },
   { label: "Family", to: "/kids" },
-  { label: "Sports", to: "/sports" },
+  { label: "Sports", to: "/kids" },
   { label: "Wishlist", to: "/wishlist" },
   { label: "Cart", to: "/cart" },
 ];
@@ -32,18 +32,24 @@ export default function Navbar() {
   }, [itemCount]);
 
   return (
-    <nav className="border-b border-black/10 bg-white/95">
+    <nav className="border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
+      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
       <PageContainer>
         <div className="flex h-20 items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2 text-lg font-black tracking-[0.24em] uppercase">
-            <span className="text-[#111111]">Mega</span>
+          <Link to="/" className="flex items-center gap-2 text-lg font-black tracking-[0.24em] uppercase text-white">
+            <span>Mega</span>
             <span className="text-[#D4AF37]">Mall</span>
           </Link>
 
-          <div className="hidden items-center gap-8 text-sm font-semibold text-[#4b5563] lg:flex">
+          <div className="hidden items-center gap-8 text-lg font-semibold text-white/80 lg:flex">
             {links.map((item) => (
-              <Link key={item.label} to={item.to} className="transition hover:text-[#D4AF37]">
-                {item.label}
+              <Link
+                key={item.label}
+                to={item.to}
+                className="group relative px-1 py-2 transition duration-300 hover:text-[#D4AF37]"
+              >
+                <span>{item.label}</span>
+                <span className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 rounded-full bg-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </div>
@@ -53,7 +59,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 to={item.to}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-[#111111] transition hover:bg-[#fff8e8] hover:text-[#D4AF37]"
+                className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-[#D4AF37]"
               >
                 {item.label}
               </Link>
@@ -64,19 +70,19 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setMobileDropdownOpen((prev) => !prev)}
-                  className="rounded-full border border-[#111111]/10 px-3 py-2 text-sm font-semibold text-[#111111] transition hover:border-[#D4AF37] hover:bg-[#fff8e8] hover:text-[#D4AF37]"
+                  className="rounded-full border border-white/10 px-3 py-2 text-sm font-semibold text-white/90 transition hover:border-[#D4AF37] hover:bg-white/10 hover:text-[#D4AF37]"
                 >
                   More
                 </button>
 
                 {mobileDropdownOpen && (
-                  <div className="absolute right-0 top-full mt-2 min-w-[10rem] rounded-2xl border border-black/10 bg-white p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
+                  <div className="absolute right-0 top-full mt-2 min-w-[10rem] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
                     {mobileDropdownLinks.map((item) => (
                       <Link
                         key={item.label}
                         to={item.to}
                         onClick={() => setMobileDropdownOpen(false)}
-                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-[#4b5563] transition hover:bg-[#fff8e8] hover:text-[#D4AF37]"
+                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-[#D4AF37]"
                       >
                         {item.label}
                       </Link>
@@ -88,10 +94,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link to="/search" className="hidden rounded-full border border-[#111111] px-5 py-2.5 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:bg-[#fff8e8] hover:text-[#111111] hover:shadow-[0_12px_30px_rgba(17,17,17,0.08)] focus-visible:outline-[#D4AF37] sm:inline-flex">
-              Explore Deals
-            </Link>
-            <Link to="/cart" className="relative flex h-11 w-11 items-center justify-center rounded-full border border-transparent bg-transparent text-[#111111] shadow-none transition hover:-translate-y-0.5 hover:text-[#D4AF37]">
+            <Link to="/cart" className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white shadow-none transition hover:-translate-y-0.5 hover:text-[#D4AF37]">
               <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7f7f2] shadow-[0_8px_24px_rgba(17,17,17,0.08)]">
                 <img src="/src/assets/images/cart-icon.svg" alt="Cart" className="h-5 w-5 object-contain" />
               </span>
@@ -104,6 +107,7 @@ export default function Navbar() {
           </div>
         </div>
       </PageContainer>
+      <div className="h-10 w-full bg-gradient-to-b from-[#222222] via-[#222222]/80 to-[#fff8e8]" />
     </nav>
   );
 }

@@ -1,19 +1,17 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import PageContainer from "../components/layout/PageContainer";
+import ProductGrid from "../components/product/ProductGrid";
 import SearchBar from "../components/search/SearchBar";
 import SearchOverlay from "../components/search/SearchOverlay";
 import SearchSuggestions from "../components/search/SearchSuggestions";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
+import { featuredProducts } from "../data/featuredProducts";
 
-const searchCatalog = [
-  { id: 1, title: "Apple iPhone 16 Pro", category: "Mobiles" },
-  { id: 2, title: "Samsung 65\" OLED Smart TV", category: "Home" },
-  { id: 3, title: "Sony PlayStation 5", category: "Gaming" },
-  { id: 4, title: "MacBook Air M4", category: "Laptops" },
-  { id: 5, title: "Ninja Air Fryer", category: "Kitchen" },
-  { id: 6, title: "Dyson V15 Vacuum", category: "Home" },
-];
+const searchCatalog = featuredProducts.map((product) => ({
+  ...product,
+  category: product.title.includes("TV") ? "Home" : product.title.includes("MacBook") ? "Computers" : product.title.includes("iPhone") ? "Mobiles" : "Electronics",
+}));
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -32,17 +30,31 @@ export default function Search() {
     });
   }, [query]);
 
-  const handleQueryChange = (event) => {
-    const nextQuery = event.target.value;
-    setQuery(nextQuery);
+  const visibleProducts = useMemo(() => {
+    const searchText = query.trim().toLowerCase();
 
-    if (!nextQuery.trim()) {
+    if (!searchText) return searchCatalog;
+
+    return searchCatalog.filter((item) => {
+      const title = item.title.toLowerCase();
+      const category = item.category.toLowerCase();
+      return title.includes(searchText) || category.includes(searchText);
+    });
+  }, [query]);
+
+  useEffect(() => {
+    if (!query.trim()) {
       setIsLoading(false);
       return;
     }
 
     setIsLoading(true);
-    window.setTimeout(() => setIsLoading(false), 180);
+    const timer = window.setTimeout(() => setIsLoading(false), 180);
+    return () => window.clearTimeout(timer);
+  }, [query]);
+
+  const handleQueryChange = (event) => {
+    setQuery(event.target.value);
   };
 
   const handleClear = () => {
@@ -63,12 +75,28 @@ export default function Search() {
     }
   };
 
+  const handleGoToCart = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.location.assign("/cart");
+  };
+
   return (
     <section className="bg-[#f7f7f2] py-24 sm:py-28">
       <PageContainer>
-        <div className="mx-auto max-w-3xl rounded-[2.5rem] border border-black/10 bg-white p-6 shadow-[0_18px_50px_rgba(17,17,17,0.06)] sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Search</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">Find the perfect device quickly.</h1>
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-black/10 bg-white p-6 shadow-[0_18px_50px_rgba(17,17,17,0.06)] sm:p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Search</p>
+              <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">Find the perfect device quickly.</h1>
+            </div>
+            <button
+              type="button"
+              onClick={handleGoToCart}
+              className="rounded-full border border-[#111111]/10 bg-[#111111] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#222222]"
+            >
+              Go to cart
+            </button>
+          </div>
           <p className="mt-4 text-base leading-8 text-[#4b5563]">
             Live filtering, keyboard support, and a responsive interface make product discovery effortless.
           </p>
@@ -94,6 +122,16 @@ export default function Search() {
                 {isLoading ? <LoadingSpinner label="Filtering products" /> : <SearchSuggestions suggestions={suggestions} onSelect={handleSelect} query={query} />}
               </div>
             </div>
+          </div>
+
+          <div className="mt-8">
+            {visibleProducts.length ? (
+              <ProductGrid products={visibleProducts} />
+            ) : (
+              <div className="rounded-[2rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
+                <p className="text-lg font-semibold text-[#111111]">No products match your search.</p>
+              </div>
+            )}
           </div>
         </div>
       </PageContainer>
