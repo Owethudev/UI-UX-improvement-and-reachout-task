@@ -1,6 +1,7 @@
 // This component renders a premium product card.
 // It keeps the UI reusable and easy to extend with new product details.
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Badge from "../ui/Badge";
@@ -11,6 +12,7 @@ import { useCart } from "../../context/CartContext";
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const { addToCart, toggleWishlist, isWishlisted } = useCart();
+  const [isExpanded, setIsExpanded] = useState(false);
   const wishlistActive = isWishlisted(product.id);
 
   const handleBuyNow = () => {
@@ -18,8 +20,20 @@ export default function ProductCard({ product }) {
     navigate("/cart");
   };
 
+  const handleCardToggle = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const handleActionClick = (event, callback) => {
+    event.stopPropagation();
+    callback();
+  };
+
   return (
-    <article className="group overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)] motion-safe:transform-gpu">
+    <article
+      onClick={handleCardToggle}
+      className={`group cursor-pointer overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)] motion-safe:transform-gpu ${isExpanded ? "ring-2 ring-[#D4AF37]/40" : ""}`}
+    >
       <div className="relative">
         <img
           src={product.image}
@@ -33,7 +47,10 @@ export default function ProductCard({ product }) {
 
         <button
           type="button"
-          onClick={() => toggleWishlist(product)}
+          onClick={(event) => {
+            event.stopPropagation();
+            toggleWishlist(product);
+          }}
           className={`absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full ${wishlistActive ? "bg-[#D4AF37] text-white" : "bg-white/90 text-[#111111]"} shadow-md transition hover:scale-105 hover:text-[#D4AF37] focus-visible:outline-[#D4AF37]`}
         >
           ♡
@@ -57,12 +74,22 @@ export default function ProductCard({ product }) {
             <p className="text-xs uppercase tracking-[0.24em] text-[#4b5563]">From</p>
             <p className="text-xl font-bold text-[#111111]">R{product.price.toLocaleString()}</p>
           </div>
+        </div>
 
+        <div className={`mt-4 overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}`}>
           <div className="flex flex-wrap justify-end gap-2">
-            <Button variant="gold" className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5" onClick={() => addToCart(product, 1)}>
+            <Button
+              variant="gold"
+              className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5"
+              onClick={(event) => handleActionClick(event, () => addToCart(product, 1))}
+            >
               Add to cart
             </Button>
-            <Button variant="outline" className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5" onClick={handleBuyNow}>
+            <Button
+              variant="outline"
+              className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5"
+              onClick={(event) => handleActionClick(event, handleBuyNow)}
+            >
               Buy now
             </Button>
           </div>

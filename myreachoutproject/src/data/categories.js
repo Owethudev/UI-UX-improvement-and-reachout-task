@@ -35,7 +35,7 @@ export const categories = [
   },
   {
     id: 4,
-    title: "Laptops",
+    title: "Computers",
     description: "Portable power for work, study, and creative flow.",
     image: computers,
   },

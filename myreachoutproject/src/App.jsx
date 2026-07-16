@@ -10,6 +10,7 @@ import ProductDetails from "./pages/ProductDetails";
 import ProductsPage from "./pages/Products";
 import Search from "./pages/Search";
 import Wishlist from "./pages/Wishlist";
+import GrandOpeningSignup from "./pages/GrandOpeningSignup";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/kids" element={<ComingSoon />} />
         <Route path="/careers" element={<ComingSoon />} />
         <Route path="/contact" element={<ComingSoon />} />
+        <Route path="/grand-opening" element={<GrandOpeningSignup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </MainLayout>

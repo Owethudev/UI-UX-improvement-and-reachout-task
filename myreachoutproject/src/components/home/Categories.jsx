@@ -1,19 +1,24 @@
 // This section showcases the most important product categories with large lifestyle imagery.
 // The data is supplied from the shared categories file so the section can evolve easily.
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PageContainer from "../layout/PageContainer";
 import CategoryCard from "./CategoryCard";
 import { categories } from "../../data/categories";
 
 export default function Categories() {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const visibleCategories = [
-    ...categories.slice(activeIndex, activeIndex + 3),
-    ...categories.slice(0, Math.max(0, 3 - Math.min(3, categories.length - activeIndex))),
-  ];
+  const visibleCategories = useMemo(() => {
+    const maxVisible = 3;
+    return [
+      ...categories.slice(activeIndex, activeIndex + maxVisible),
+      ...categories.slice(0, Math.max(0, maxVisible - Math.min(maxVisible, categories.length - activeIndex))),
+    ];
+  }, [activeIndex]);
 
   const moveLeft = () => {
     setActiveIndex((current) => (current === 0 ? categories.length - 1 : current - 1));
@@ -21,6 +26,10 @@ export default function Categories() {
 
   const moveRight = () => {
     setActiveIndex((current) => (current + 1) % categories.length);
+  };
+
+  const handleCategoryClick = (item) => {
+    navigate("/grand-opening", { state: { selectedCategory: item.title } });
   };
 
   return (
@@ -55,6 +64,7 @@ export default function Categories() {
                   description={item.description}
                   image={item.image}
                   className="h-full"
+                  onClick={() => handleCategoryClick(item)}
                 />
               </div>
             ))}
@@ -69,6 +79,7 @@ export default function Categories() {
             →
           </button>
         </div>
+
       </PageContainer>
     </section>
   );
