@@ -1,19 +1,12 @@
 import MainLayout from "./layouts/MainLayout";
-
-import Home from "./pages/Home";
+import Products from "./components/product/Products";
 
 function App() {
-
-    return (
-
-        <MainLayout>
-
-            <Home />
-
-        </MainLayout>
-
-    )
-
+  return (
+    <MainLayout>
+      <Products />
+    </MainLayout>
+  );
 }
 
 export default App;
