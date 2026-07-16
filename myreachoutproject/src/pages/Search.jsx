@@ -4,7 +4,7 @@ import PageContainer from "../components/layout/PageContainer";
 import SearchBar from "../components/search/SearchBar";
 import SearchOverlay from "../components/search/SearchOverlay";
 import SearchSuggestions from "../components/search/SearchSuggestions";
-import { featuredProducts } from "../data/featuredProducts";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
 
 const searchCatalog = [
   { id: 1, title: "Apple iPhone 16 Pro", category: "Mobiles" },
@@ -18,6 +18,7 @@ const searchCatalog = [
 export default function Search() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const suggestions = useMemo(() => {
     const searchText = query.trim().toLowerCase();
@@ -29,6 +30,17 @@ export default function Search() {
       const category = item.category.toLowerCase();
       return title.includes(searchText) || category.includes(searchText);
     });
+  }, [query]);
+
+  useMemo(() => {
+    if (!query.trim()) {
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
+    const timer = window.setTimeout(() => setIsLoading(false), 180);
+    return () => window.clearTimeout(timer);
   }, [query]);
 
   const handleSelect = (item) => {
@@ -71,7 +83,7 @@ export default function Search() {
                 onClear={() => setQuery("")}
               />
               <div className="mt-4">
-                <SearchSuggestions suggestions={suggestions} onSelect={handleSelect} query={query} />
+                {isLoading ? <LoadingSpinner label="Filtering products" /> : <SearchSuggestions suggestions={suggestions} onSelect={handleSelect} query={query} />}
               </div>
             </div>
           </div>

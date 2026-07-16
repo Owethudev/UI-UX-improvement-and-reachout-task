@@ -23,7 +23,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          <button className="rounded-full border border-[#111111] px-5 py-2.5 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#111111] hover:text-white">
+          <button className="rounded-full border border-[#111111] px-5 py-2.5 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#111111] hover:text-white focus-visible:outline-[#D4AF37]">
             Explore Deals
           </button>
         </div>

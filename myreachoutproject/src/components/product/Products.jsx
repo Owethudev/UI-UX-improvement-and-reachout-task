@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import PageContainer from "../layout/PageContainer";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import SkeletonCard from "../ui/SkeletonCard";
 import { featuredProducts } from "../../data/featuredProducts";
 import FilterSidebar from "./FilterSidebar";
 import ProductGrid from "./ProductGrid";
@@ -20,6 +22,12 @@ export default function Products() {
   const [selectedPrice, setSelectedPrice] = useState("All");
   const [sortBy, setSortBy] = useState("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 250);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const visibleProducts = useMemo(() => {
     const filtered = catalogProducts.filter((product) => {
@@ -74,7 +82,20 @@ export default function Products() {
               onSortChange={setSortBy}
               onOpenFilters={() => setMobileFilterOpen(true)}
             />
-            <ProductGrid products={visibleProducts} />
+            {isLoading ? (
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-2">
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <SkeletonCard key={index} />
+                ))}
+              </div>
+            ) : visibleProducts.length ? (
+              <ProductGrid products={visibleProducts} />
+            ) : (
+              <div className="rounded-[1.5rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
+                <p className="text-lg font-semibold text-[#111111]">No products match these filters.</p>
+                <p className="mt-2 text-sm leading-7 text-[#4b5563]">Try another category or price range to see more options.</p>
+              </div>
+            )}
           </div>
         </div>
       </PageContainer>

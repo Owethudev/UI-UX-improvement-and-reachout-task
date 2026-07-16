@@ -7,19 +7,19 @@ import Rating from "../ui/Rating";
 
 export default function ProductCard({ product }) {
   return (
-    <article className="group overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)]">
+    <article className="group overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)] motion-safe:transform-gpu">
       <div className="relative">
         <img
           src={product.image}
           alt={product.title}
-          className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
+          className="aspect-[4/3] w-full object-cover transition duration-700 motion-safe:group-hover:scale-105"
         />
 
         <div className="absolute left-4 top-4">
           <Badge>{product.badge}</Badge>
         </div>
 
-        <button className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl text-[#111111] shadow-md transition hover:scale-105 hover:text-[#D4AF37]">
+        <button className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl text-[#111111] shadow-md transition hover:scale-105 hover:text-[#D4AF37] focus-visible:outline-[#D4AF37]">
           ♡
         </button>
       </div>
@@ -42,7 +42,7 @@ export default function ProductCard({ product }) {
             <p className="text-xl font-bold text-[#111111]">${product.price.toLocaleString()}</p>
           </div>
 
-          <Button variant="outline" className="rounded-full px-4 py-2.5 text-sm">
+          <Button variant="outline" className="rounded-full px-4 py-2.5 text-sm hover:-translate-y-0.5">
             Buy now
           </Button>
         </div>

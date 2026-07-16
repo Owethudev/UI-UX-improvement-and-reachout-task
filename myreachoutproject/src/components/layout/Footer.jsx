@@ -40,7 +40,7 @@ export default function Footer() {
             <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
               <input
                 placeholder="Email address"
-                className="w-full rounded-xl border border-transparent bg-white px-3 py-2.5 text-sm text-[#111111] outline-none"
+                className="w-full rounded-xl border border-transparent bg-white px-3 py-2.5 text-sm text-[#111111] outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20"
               />
             </div>
           </div>
