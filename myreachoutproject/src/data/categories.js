@@ -8,7 +8,7 @@
 import phones from "../assets/images/categories/phones.webp";
 import televisions from "../assets/images/categories/televisions.webp";
 import gaming from "../assets/images/categories/gaming.webp";
-import laptops from "../assets/images/categories/laptops.webp";
+import computers from "../assets/images/categories/computers.webp";
 import kitchen from "../assets/images/categories/kitchen.webp";
 import appliances from "../assets/images/categories/appliances.webp";
 
@@ -35,7 +35,7 @@ export const categories = [
     id: 4,
     title: "Laptops",
     description: "Portable power for work, study, and creative flow.",
-    image: laptops,
+    image: computers,
   },
   {
     id: 5,

@@ -51,28 +51,28 @@ const trustItems = [
 
 export default function TrustSection() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="py-24 sm:py-28">
       <PageContainer>
         <div className="mb-10 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
             Why customers choose us
           </p>
-          <h2 className="mt-2 text-3xl font-semibold text-[#111111] sm:text-4xl">
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">
             Designed for confidence from discovery to delivery.
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {trustItems.map((item) => (
             <div
               key={item.title}
-              className="rounded-[1.5rem] border border-black/10 bg-white p-7 shadow-[0_18px_50px_rgba(17,17,17,0.05)] transition duration-300 hover:-translate-y-1"
+              className="rounded-[1.75rem] border border-black/10 bg-white p-8 shadow-[0_18px_50px_rgba(17,17,17,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(17,17,17,0.12)]"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111111] text-[#D4AF37]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111111] text-[#D4AF37] shadow-sm">
                 {item.icon}
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-[#111111]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-[#4b5563]">{item.description}</p>
+              <h3 className="mt-5 text-xl font-semibold text-[#111111]">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#4b5563]">{item.description}</p>
             </div>
           ))}
         </div>

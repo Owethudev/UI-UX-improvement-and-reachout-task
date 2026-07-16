@@ -11,15 +11,15 @@ function Newsletter() {
   };
 
   return (
-    <section className="py-16 sm:py-20">
+    <section className="py-24 sm:py-28">
       <PageContainer>
-        <div className="overflow-hidden rounded-[2rem] bg-[#111111] px-6 py-10 shadow-[0_24px_80px_rgba(17,17,17,0.18)] sm:px-10 lg:px-12 lg:py-14">
+        <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111111] px-6 py-10 shadow-[0_24px_80px_rgba(17,17,17,0.18)] sm:px-10 lg:px-12 lg:py-14">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
                 Stay in the loop
               </p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+              <h2 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 Get premium offers and product drops first.
               </h2>
               <p className="mt-4 text-base leading-8 text-white/75 sm:text-lg">
@@ -34,11 +34,11 @@ function Newsletter() {
                   id="newsletter-email"
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full rounded-full border border-white/15 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/60 focus:border-[#D4AF37] focus:outline-none"
+                  className="w-full rounded-xl border border-white/15 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/60 transition focus:border-[#D4AF37] focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-[#D4AF37] px-6 py-3.5 text-sm font-semibold text-[#111111] transition hover:bg-[#e6c24d]"
+                  className="rounded-2xl bg-[#D4AF37] px-6 py-3.5 text-sm font-semibold text-[#111111] transition hover:bg-[#e6c24d]"
                 >
                   Subscribe
                 </button>

@@ -1,5 +1,5 @@
-function Products() {
-  return <div>Products page placeholder</div>
-}
+import Products from "../components/product/Products";
 
-export default Products
+export default function ProductsPage() {
+  return <Products />;
+}

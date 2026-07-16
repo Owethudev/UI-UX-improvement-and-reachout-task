@@ -67,23 +67,23 @@ const brands = [
 
 export default function Brands() {
   return (
-    <section className="border-y border-black/10 bg-[#f7f7f2] py-14 sm:py-16">
+    <section className="border-y border-black/10 bg-[#f7f7f2] py-24 sm:py-28">
       <PageContainer>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
               Trusted by leaders
             </p>
-            <h2 className="mt-2 text-2xl font-semibold text-[#111111] sm:text-3xl">
+            <h2 className="mt-3 text-3xl font-semibold text-[#111111] sm:text-4xl">
               Premium technology brands, presented with clarity.
             </h2>
           </div>
 
-          <div className="flex gap-4 overflow-x-auto pb-2 sm:gap-6 lg:flex-wrap lg:overflow-visible">
+          <div className="flex gap-4 overflow-x-auto pb-2 sm:gap-5 lg:flex-wrap lg:overflow-visible">
             {brands.map((brand) => (
               <div
                 key={brand.name}
-                className="flex min-w-[160px] flex-shrink-0 items-center justify-center rounded-[1.25rem] border border-black/10 bg-white px-6 py-5 shadow-[0_16px_36px_rgba(17,17,17,0.05)] transition duration-300 hover:-translate-y-1 sm:min-w-[180px] lg:min-w-[150px]"
+                className="flex min-w-[160px] flex-shrink-0 items-center justify-center rounded-[1.5rem] border border-black/10 bg-white px-6 py-5 shadow-[0_16px_36px_rgba(17,17,17,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,17,17,0.12)] sm:min-w-[180px] lg:min-w-[150px]"
               >
                 {brand.logo}
               </div>

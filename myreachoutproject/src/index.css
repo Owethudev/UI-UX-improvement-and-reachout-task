@@ -12,6 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@import "tailwindcss";
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #f8fafc; color: #111827; }

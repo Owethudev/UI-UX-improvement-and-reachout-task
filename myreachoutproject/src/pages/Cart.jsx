@@ -10,11 +10,11 @@ export default function Cart() {
   const { cartItems } = useCart();
 
   return (
-    <section className="bg-[#f7f7f2] py-16 sm:py-20">
+    <section className="bg-[#f7f7f2] py-24 sm:py-28">
       <PageContainer>
         <div className="mb-10">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Your bag</p>
-          <h1 className="mt-2 text-3xl font-semibold text-[#111111] sm:text-4xl">A premium checkout experience starts here.</h1>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">A premium checkout experience starts here.</h1>
         </div>
 
         {cartItems.length === 0 ? (

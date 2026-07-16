@@ -3,7 +3,7 @@
 
 export default function Badge({ children }) {
   return (
-    <span className="inline-flex rounded-full bg-[#111111] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+    <span className="inline-flex rounded-full border border-[#D4AF37]/25 bg-[#111111]/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D4AF37] shadow-sm">
       {children}
     </span>
   );

@@ -32,20 +32,28 @@ export default function Search() {
     });
   }, [query]);
 
-  useMemo(() => {
-    if (!query.trim()) {
+  const handleQueryChange = (event) => {
+    const nextQuery = event.target.value;
+    setQuery(nextQuery);
+
+    if (!nextQuery.trim()) {
       setIsLoading(false);
       return;
     }
 
     setIsLoading(true);
-    const timer = window.setTimeout(() => setIsLoading(false), 180);
-    return () => window.clearTimeout(timer);
-  }, [query]);
+    window.setTimeout(() => setIsLoading(false), 180);
+  };
+
+  const handleClear = () => {
+    setQuery("");
+    setIsLoading(false);
+  };
 
   const handleSelect = (item) => {
     setQuery(item.title);
     setOpen(false);
+    setIsLoading(false);
   };
 
   const handleKeyDown = (event) => {
@@ -56,11 +64,11 @@ export default function Search() {
   };
 
   return (
-    <section className="bg-[#f7f7f2] py-16 sm:py-20">
+    <section className="bg-[#f7f7f2] py-24 sm:py-28">
       <PageContainer>
-        <div className="mx-auto max-w-3xl rounded-[2rem] border border-black/10 bg-white p-6 shadow-[0_18px_50px_rgba(17,17,17,0.06)] sm:p-8">
+        <div className="mx-auto max-w-3xl rounded-[2.5rem] border border-black/10 bg-white p-6 shadow-[0_18px_50px_rgba(17,17,17,0.06)] sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Search</p>
-          <h1 className="mt-2 text-3xl font-semibold text-[#111111] sm:text-4xl">Find the perfect device quickly.</h1>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">Find the perfect device quickly.</h1>
           <p className="mt-4 text-base leading-8 text-[#4b5563]">
             Live filtering, keyboard support, and a responsive interface make product discovery effortless.
           </p>
@@ -69,18 +77,18 @@ export default function Search() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="w-full rounded-full border border-black/10 bg-[#f7f7f2] px-4 py-3 text-left text-sm text-[#4b5563]"
+              className="w-full rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-3.5 text-left text-sm text-[#4b5563] shadow-sm"
             >
               Try searching for “iPhone”, “TV”, or “MacBook”
             </button>
 
-            <div className="rounded-[1.25rem] border border-black/10 bg-[#f7f7f2] p-4">
+            <div className="rounded-[1.5rem] border border-black/10 bg-[#f7f7f2] p-4">
               <SearchBar
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={handleQueryChange}
                 onFocus={() => setOpen(true)}
                 onKeyDown={handleKeyDown}
-                onClear={() => setQuery("")}
+                onClear={handleClear}
               />
               <div className="mt-4">
                 {isLoading ? <LoadingSpinner label="Filtering products" /> : <SearchSuggestions suggestions={suggestions} onSelect={handleSelect} query={query} />}
@@ -93,7 +101,7 @@ export default function Search() {
       <SearchOverlay
         open={open}
         query={query}
-        onQueryChange={(event) => setQuery(event.target.value)}
+        onQueryChange={handleQueryChange}
         suggestions={suggestions}
         onSelect={handleSelect}
         onClose={() => setOpen(false)}

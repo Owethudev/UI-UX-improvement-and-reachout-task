@@ -15,7 +15,7 @@ export default function ProductGallery({ images, title }) {
             key={image}
             type="button"
             onClick={() => setActiveImage(image)}
-            className={`overflow-hidden rounded-[1rem] border transition ${
+            className={`overflow-hidden rounded-[1rem] border transition-all ${
               activeImage === image ? "border-[#D4AF37] ring-2 ring-[#D4AF37]/20" : "border-black/10"
             }`}
           >

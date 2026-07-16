@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
 import PageContainer from "../layout/PageContainer";
-import LoadingSpinner from "../ui/LoadingSpinner";
 import SkeletonCard from "../ui/SkeletonCard";
 import { featuredProducts } from "../../data/featuredProducts";
 import FilterSidebar from "./FilterSidebar";
@@ -34,8 +33,8 @@ export default function Products() {
       const matchesCategory = activeCategory === "All" || product.category === activeCategory;
       const matchesPrice =
         selectedPrice === "All" ||
-        (selectedPrice === "Under $10k" && product.price < 10000) ||
-        (selectedPrice === "Under $20k" && product.price < 20000) ||
+        (selectedPrice === "Under R 10k" && product.price < 10000) ||
+        (selectedPrice === "Under R 20k" && product.price < 20000) ||
         (selectedPrice === "Premium" && product.price >= 20000);
 
       return matchesCategory && matchesPrice;
@@ -53,16 +52,16 @@ export default function Products() {
   }, [activeCategory, selectedPrice, sortBy]);
 
   return (
-    <section className="bg-[#f7f7f2] py-16 sm:py-20">
+    <section className="bg-[#f7f7f2] py-20 sm:py-24">
       <PageContainer>
-        <div className="mb-8 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Shop the collection</p>
-            <h2 className="mt-2 text-3xl font-semibold text-[#111111] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold text-[#111111] sm:text-4xl">
               Browse premium electronics with effortless filters.
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
+          <p className="max-w-2xl text-sm leading-8 text-[#4b5563] sm:text-base">
             Discover expertly curated devices with a layout designed for quick discovery on desktop and smooth browsing on mobile.
           </p>
         </div>
@@ -91,7 +90,7 @@ export default function Products() {
             ) : visibleProducts.length ? (
               <ProductGrid products={visibleProducts} />
             ) : (
-              <div className="rounded-[1.5rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
+              <div className="rounded-[2rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
                 <p className="text-lg font-semibold text-[#111111]">No products match these filters.</p>
                 <p className="mt-2 text-sm leading-7 text-[#4b5563]">Try another category or price range to see more options.</p>
               </div>

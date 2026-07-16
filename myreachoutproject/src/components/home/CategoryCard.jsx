@@ -3,7 +3,7 @@
 
 export default function CategoryCard({ title, description, image }) {
   return (
-    <article className="group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_20px_60px_rgba(17,17,17,0.08)]">
+    <article className="group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_24px_70px_rgba(17,17,17,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_rgba(17,17,17,0.14)]">
       <img
         src={image}
         alt={title}

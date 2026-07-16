@@ -1,18 +1,17 @@
 import { useMemo } from "react";
 
+import iphone16 from "../assets/images/products/iphone16.webp";
+import macbookAir from "../assets/images/products/macbook-air.webp";
+import ps5 from "../assets/images/products/ps5.webp";
+import samsungTV from "../assets/images/products/samsung-tv.webp";
 import PageContainer from "../components/layout/PageContainer";
+import ProductCard from "../components/product/ProductCard";
 import ProductGallery from "../components/product/ProductGallery";
 import ProductInfo from "../components/product/ProductInfo";
 import ProductTabs from "../components/product/ProductTabs";
 import { featuredProducts } from "../data/featuredProducts";
-import ProductCard from "../components/product/ProductCard";
 
-const productImages = [
-  "/src/assets/images/products/iphone16.webp",
-  "/src/assets/images/products/macbook-air.webp",
-  "/src/assets/images/products/samsung-tv.webp",
-  "/src/assets/images/products/ps5.webp",
-];
+const productImages = [iphone16, macbookAir, samsungTV, ps5];
 
 export default function ProductDetails() {
   const product = useMemo(() => ({
