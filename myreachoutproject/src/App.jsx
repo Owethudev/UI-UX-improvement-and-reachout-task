@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import ProductDetails from "./pages/ProductDetails";
+import ProductsPage from "./pages/Products";
 import Search from "./pages/Search";
 import Wishlist from "./pages/Wishlist";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/products" element={<ProductsPage />} />
         <Route path="/product" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

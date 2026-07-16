@@ -11,13 +11,8 @@ export default function Footer() {
   return (
     <footer className="mt-24 border-t border-black/10 bg-[#111111] text-white">
       <PageContainer>
-        <div className="grid gap-10 py-14 md:grid-cols-4">
         <div className="grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h2 className="mb-4 text-xl font-black tracking-[0.2em] text-[#D4AF37] uppercase">
-              MegaMall
-            </h2>
-            <p className="max-w-xs text-sm leading-7 text-white/70">
             <h2 className="text-xl font-black uppercase tracking-[0.3em] text-[#D4AF37]">MegaMall</h2>
             <p className="mt-4 max-w-xs text-sm leading-7 text-white/70">
               Premium electronics shopping for modern homes, studios, and workspaces.
