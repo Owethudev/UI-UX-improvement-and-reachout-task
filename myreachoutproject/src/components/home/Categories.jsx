@@ -35,38 +35,39 @@ export default function Categories() {
               Discover curated picks with a simple swipe of the arrows.
             </h2>
           </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={moveLeft}
-              aria-label="Show previous categories"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={moveRight}
-              aria-label="Show next categories"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
-            >
-              →
-            </button>
-          </div>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto pb-2 sm:gap-6">
-          {visibleCategories.map((item, index) => (
-            <div key={`${item.id}-${index}`} className="w-full min-w-[240px] max-w-[280px] flex-none sm:min-w-[260px]">
-              <CategoryCard
-                title={item.title}
-                description={item.description}
-                image={item.image}
-                className="h-full"
-              />
-            </div>
-          ))}
+        <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 sm:gap-4">
+          <button
+            type="button"
+            onClick={moveLeft}
+            aria-label="Show previous categories"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+          >
+            ←
+          </button>
+
+          <div className="flex flex-1 justify-center gap-4 overflow-x-auto pb-2 sm:gap-6">
+            {visibleCategories.map((item, index) => (
+              <div key={`${item.id}-${index}`} className="w-full min-w-[240px] max-w-[280px] flex-none sm:min-w-[260px]">
+                <CategoryCard
+                  title={item.title}
+                  description={item.description}
+                  image={item.image}
+                  className="h-full"
+                />
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={moveRight}
+            aria-label="Show next categories"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+          >
+            →
+          </button>
         </div>
       </PageContainer>
     </section>
