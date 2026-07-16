@@ -8,6 +8,7 @@ import Brands from "../components/home/Brands";
 import Hero from "../components/home/Hero";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import PageContainer from "../components/layout/PageContainer";
+import TrustSection from "../components/home/TrustSection";
 
 const highlights = [
   { title: "Fast delivery", text: "Premium shipping for urgent electronics purchases." },
@@ -37,6 +38,7 @@ export default function Home() {
       </section>
 
       <Brands />
+      <TrustSection />
       <FeaturedProducts />
     </>
   );
