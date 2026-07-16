@@ -1,9 +1,9 @@
 // This component renders a single category card with a rich hero image.
 // Another developer can extend it by changing the text, image treatment, or CTA.
 
-export default function CategoryCard({ title, description, image }) {
+export default function CategoryCard({ title, description, image, className = "" }) {
   return (
-    <article className="group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_24px_70px_rgba(17,17,17,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_rgba(17,17,17,0.14)]">
+    <article className={`group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_24px_70px_rgba(17,17,17,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_rgba(17,17,17,0.14)] ${className}`.trim()}>
       <img
         src={image}
         alt={title}

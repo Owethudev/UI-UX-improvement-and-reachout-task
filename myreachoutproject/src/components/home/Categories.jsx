@@ -1,38 +1,71 @@
 // This section showcases the most important product categories with large lifestyle imagery.
 // The data is supplied from the shared categories file so the section can evolve easily.
 
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import PageContainer from "../layout/PageContainer";
 import CategoryCard from "./CategoryCard";
 import { categories } from "../../data/categories";
 
 export default function Categories() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const visibleCategories = [
+    ...categories.slice(activeIndex, activeIndex + 3),
+    ...categories.slice(0, Math.max(0, 3 - Math.min(3, categories.length - activeIndex))),
+  ];
+
+  const moveLeft = () => {
+    setActiveIndex((current) => (current === 0 ? categories.length - 1 : current - 1));
+  };
+
+  const moveRight = () => {
+    setActiveIndex((current) => (current + 1) % categories.length);
+  };
+
   return (
-    <section className="py-24 sm:py-28">
+    <section className="border-b border-black/10 bg-[linear-gradient(180deg,#fffdf7_0%,#fff8e8_100%)] py-8 sm:py-10">
       <PageContainer>
-        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
-              Shop by category
+              Featured categories
             </p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-tight text-[#111111] sm:text-5xl">
-              Find the right tech for every moment.
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#111111] sm:text-4xl">
+              Discover curated picks with a simple swipe of the arrows.
             </h2>
           </div>
-          <Link to="/search" className="text-sm font-semibold text-[#111111] transition hover:text-[#D4AF37]">
-            Browse all
-          </Link>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={moveLeft}
+              aria-label="Show previous categories"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={moveRight}
+              aria-label="Show next categories"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-xl text-[#111111] shadow-sm transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:text-[#D4AF37]"
+            >
+              →
+            </button>
+          </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((item) => (
-            <CategoryCard
-              key={item.id}
-              title={item.title}
-              description={item.description}
-              image={item.image}
-            />
+        <div className="flex gap-4 overflow-x-auto pb-2 sm:gap-6">
+          {visibleCategories.map((item, index) => (
+            <div key={`${item.id}-${index}`} className="w-full min-w-[240px] max-w-[280px] flex-none sm:min-w-[260px]">
+              <CategoryCard
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                className="h-full"
+              />
+            </div>
           ))}
         </div>
       </PageContainer>

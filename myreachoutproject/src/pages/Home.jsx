@@ -8,10 +8,10 @@ import TrustSection from "../components/home/TrustSection";
 export default function Home() {
   return (
     <>
+      <Categories />
       <Hero />
       <Brands />
       <FeaturedProducts />
-      <Categories />
       <TrustSection />
       <Newsletter />
     </>
