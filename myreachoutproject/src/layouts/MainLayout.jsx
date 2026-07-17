@@ -1,7 +1,7 @@
 // This is the shared shell for every page.
 // It keeps the navigation, content area, and footer consistent across the redesign.
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import Navbar from "../components/navigation/Navbar";
 import Footer from "../components/layout/Footer";
@@ -10,19 +10,31 @@ export default function MainLayout({ children }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+    let frameId = 0;
+
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
+      if (frameId) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        setShowScrollTop(window.scrollY > 300);
+        frameId = 0;
+      });
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#f7f7f1] text-[#111111]">

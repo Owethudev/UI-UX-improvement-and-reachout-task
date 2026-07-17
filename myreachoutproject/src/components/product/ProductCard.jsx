@@ -1,7 +1,7 @@
 // This component renders a premium product card.
 // It keeps the UI reusable and easy to extend with new product details.
 
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Badge from "../ui/Badge";
@@ -9,30 +9,30 @@ import Button from "../ui/Button";
 import Rating from "../ui/Rating";
 import { useCart } from "../../context/CartContext";
 
-export default function ProductCard({ product }) {
+function ProductCard({ product }) {
   const navigate = useNavigate();
   const { addToCart, toggleWishlist, isWishlisted } = useCart();
   const [isExpanded, setIsExpanded] = useState(false);
   const wishlistActive = isWishlisted(product.id);
 
-  const handleBuyNow = () => {
+  const handleBuyNow = useCallback(() => {
     addToCart(product, 1);
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     navigate("/cart", { replace: false });
-  };
+  }, [addToCart, navigate, product]);
 
-  const handleCardToggle = () => {
+  const handleCardToggle = useCallback(() => {
     setIsExpanded((prev) => !prev);
-  };
+  }, []);
 
-  const handleActionClick = (event, callback) => {
+  const handleActionClick = useCallback((event, callback) => {
     event.stopPropagation();
     callback();
-  };
+  }, []);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     addToCart(product, 1);
-  };
+  }, [addToCart, product]);
 
   return (
     <article
@@ -43,6 +43,8 @@ export default function ProductCard({ product }) {
         <img
           src={product.image}
           alt={product.title}
+          loading="lazy"
+          decoding="async"
           className="aspect-[4/3] w-full object-cover transition duration-700 motion-safe:group-hover:scale-105"
         />
 
@@ -103,3 +105,5 @@ export default function ProductCard({ product }) {
     </article>
   );
 }
+
+export default memo(ProductCard);

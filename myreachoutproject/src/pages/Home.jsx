@@ -1,19 +1,25 @@
-import Brands from "../components/home/Brands";
-import Categories from "../components/home/Categories";
-import FeaturedProducts from "../components/home/FeaturedProducts";
-import Hero from "../components/home/Hero";
-import Newsletter from "../components/home/Newsletter";
-import TrustSection from "../components/home/TrustSection";
+import { lazy, Suspense } from "react";
+
+const Categories = lazy(() => import("../components/home/Categories"));
+const Hero = lazy(() => import("../components/home/Hero"));
+const Brands = lazy(() => import("../components/home/Brands"));
+const FeaturedProducts = lazy(() => import("../components/home/FeaturedProducts"));
+const TrustSection = lazy(() => import("../components/home/TrustSection"));
+const Newsletter = lazy(() => import("../components/home/Newsletter"));
+
+function Section({ children }) {
+  return <Suspense fallback={null}>{children}</Suspense>;
+}
 
 export default function Home() {
   return (
     <>
-      <Categories />
-      <Hero />
-      <Brands />
-      <FeaturedProducts />
-      <TrustSection />
-      <Newsletter />
+      <Section><Categories /></Section>
+      <Section><Hero /></Section>
+      <Section><Brands /></Section>
+      <Section><FeaturedProducts /></Section>
+      <Section><TrustSection /></Section>
+      <Section><Newsletter /></Section>
     </>
   );
 }

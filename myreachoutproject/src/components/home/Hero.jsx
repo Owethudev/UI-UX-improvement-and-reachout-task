@@ -1,26 +1,43 @@
 // This hero section introduces the redesigned storefront with a premium headline and CTA.
 // Another developer can extend it by swapping in a new image or changing the featured copy.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import PageContainer from "../layout/PageContainer";
 import heroImage from "../../assets/images/hero/hero-banner.webp";
 
 export default function Hero() {
-  const [imageTransform, setImageTransform] = useState("translate3d(0, 0px, 0) scale(1)");
+  const imageRef = useRef(null);
+  const frameRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateImageTransform = () => {
+      if (!imageRef.current) return;
+
       const offset = Math.min(window.scrollY * 0.14, 24);
       const scale = 1 + Math.min(window.scrollY * 0.00012, 0.04);
-      setImageTransform(`translate3d(0, ${offset}px, 0) scale(${scale})`);
+      imageRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(${scale})`;
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (frameRef.current) return;
+
+      frameRef.current = window.requestAnimationFrame(() => {
+        updateImageTransform();
+        frameRef.current = 0;
+      });
+    };
+
+    updateImageTransform();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frameRef.current) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -64,9 +81,13 @@ export default function Hero() {
           <div className="relative hidden lg:block">
             <div className="absolute inset-0 -translate-x-4 translate-y-4 rounded-[2rem] bg-[#D4AF37]/20 blur-3xl" />
             <img
+              ref={imageRef}
               src={heroImage}
               alt="Premium electronics display"
-              style={{ transform: imageTransform }}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              style={{ willChange: "transform" }}
               className="relative w-full rounded-[2rem] border border-black/10 object-cover shadow-[0_40px_120px_rgba(17,17,17,0.12)] transition-transform duration-200 ease-out"
             />
           </div>

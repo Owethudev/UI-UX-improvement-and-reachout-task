@@ -1,16 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import ProductCard from "./ProductCard";
 
-export default function ProductGrid({ products, initialCount = 4, increment = 4 }) {
+function ProductGrid({ products, initialCount = 4, increment = 4 }) {
   const [visibleCount, setVisibleCount] = useState(initialCount);
 
   useEffect(() => {
     setVisibleCount(initialCount);
-  }, [initialCount, products]);
+  }, [initialCount, products.length]);
 
   const visibleProducts = useMemo(() => products.slice(0, visibleCount), [products, visibleCount]);
   const hasMore = visibleCount < products.length;
+  const handleLoadMore = useCallback(() => {
+    setVisibleCount((current) => Math.min(current + increment, products.length));
+  }, [increment, products.length]);
 
   return (
     <div className="space-y-6">
@@ -24,7 +27,7 @@ export default function ProductGrid({ products, initialCount = 4, increment = 4 
         <div className="flex justify-center">
           <button
             type="button"
-            onClick={() => setVisibleCount((current) => Math.min(current + increment, products.length))}
+            onClick={handleLoadMore}
             className="rounded-full border border-[#111111]/15 bg-white px-5 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:border-[#D4AF37] hover:bg-[#fff8e8]"
           >
             Load more
@@ -34,3 +37,5 @@ export default function ProductGrid({ products, initialCount = 4, increment = 4 
     </div>
   );
 }
+
+export default memo(ProductGrid);

@@ -1,7 +1,9 @@
 // This component renders a single category card with a rich hero image.
 // Another developer can extend it by changing the text, image treatment, or CTA.
 
-export default function CategoryCard({ title, description, image, className = "", isCenter = false, onClick = () => {} }) {
+import { memo } from "react";
+
+function CategoryCard({ title, description, image, className = "", isCenter = false, onClick = () => {} }) {
   return (
     <button
       type="button"
@@ -14,6 +16,8 @@ export default function CategoryCard({ title, description, image, className = ""
       <img
         src={image}
         alt={title}
+        loading="lazy"
+        decoding="async"
         className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-110"
       />
 
@@ -26,3 +30,5 @@ export default function CategoryCard({ title, description, image, className = ""
     </button>
   );
 }
+
+export default memo(CategoryCard);
