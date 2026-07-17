@@ -1,0 +1,9 @@
+# I keep this YAML file at the workspace root so my deployment config lives close to the project.
+# If I want to change the publish folder later, I can update the path below.
+version: 1
+build:
+  publish: myreachoutproject/dist
+redirects:
+  - from: "/*"
+    to: "/index.html"
+    status: 200

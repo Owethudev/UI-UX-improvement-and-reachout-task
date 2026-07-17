@@ -1,3 +1,5 @@
+// I use this file to define the app's route structure and to keep my page transitions lightweight.
+// If I want to add a new page later, I can add another lazy-loaded route here without changing the layout.
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -15,8 +17,10 @@ const Wishlist = lazy(() => import("./pages/Wishlist"));
 const GrandOpeningSignup = lazy(() => import("./pages/GrandOpeningSignup"));
 
 function App() {
+  // I track the current location so I can reset the scroll position whenever I move between pages.
   const location = useLocation();
 
+  // I use this effect to make sure each route starts at the top of the page when I navigate.
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);

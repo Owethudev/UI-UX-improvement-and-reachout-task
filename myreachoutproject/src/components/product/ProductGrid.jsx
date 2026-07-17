@@ -1,10 +1,14 @@
+// I use this component to control how many products I show initially and how many more appear when I press load more.
+// If I want to change the grid behavior, I can tweak the initialCount or increment values here.
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import ProductCard from "./ProductCard";
 
 function ProductGrid({ products, initialCount = 4, increment = 4 }) {
+  // I keep track of how many items are visible so I can progressively reveal more products without changing the layout.
   const [visibleCount, setVisibleCount] = useState(initialCount);
 
+  // I reset the visible count whenever the incoming product list changes so the grid stays consistent.
   useEffect(() => {
     setVisibleCount(initialCount);
   }, [initialCount, products.length]);

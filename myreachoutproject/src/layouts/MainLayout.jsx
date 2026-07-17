@@ -1,6 +1,5 @@
-// This is the shared shell for every page.
-// It keeps the navigation, content area, and footer consistent across the redesign.
-
+// I use this shared layout to wrap every page with the same navigation, content area, footer, and scroll-to-top action.
+// If I want to change the shell later, I can do it once here and it will reflect across the app.
 import { useCallback, useEffect, useState } from "react";
 
 import Navbar from "../components/navigation/Navbar";

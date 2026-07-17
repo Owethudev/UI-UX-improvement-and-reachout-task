@@ -1,5 +1,5 @@
-// This hero section introduces the redesigned storefront with a premium headline and CTA.
-// Another developer can extend it by swapping in a new image or changing the featured copy.
+// I use this hero section to introduce the storefront with my headline, supporting copy, and main call-to-action.
+// If I want to change the messaging or image later, I can update the content here without affecting the rest of the page.
 
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
@@ -8,9 +8,11 @@ import PageContainer from "../layout/PageContainer";
 import heroImage from "../../assets/images/hero/hero-banner.webp";
 
 export default function Hero() {
+  // I keep a reference to the hero image so I can update its transform without forcing a React rerender.
   const imageRef = useRef(null);
   const frameRef = useRef(0);
 
+  // I use this effect to make the hero image feel slightly parallax-like as I scroll, while keeping the update efficient.
   useEffect(() => {
     const updateImageTransform = () => {
       if (!imageRef.current) return;

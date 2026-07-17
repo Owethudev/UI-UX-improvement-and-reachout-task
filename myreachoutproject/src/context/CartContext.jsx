@@ -1,3 +1,5 @@
+// I use this context to share cart, wishlist, and coupon state throughout the app without prop drilling.
+// If I want to add a new cart feature later, I can extend this provider and keep the UI simple.
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import { featuredProducts } from "../data/featuredProducts";

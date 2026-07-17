@@ -1,3 +1,5 @@
+// I use this page to compose my homepage sections in a lightweight way so the initial page load stays efficient.
+// If I want to add or remove a section later, I can update this single file and keep the rest intact.
 import { lazy, Suspense } from "react";
 
 const Categories = lazy(() => import("../components/home/Categories"));
