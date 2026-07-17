@@ -44,6 +44,12 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handlePointerDown);
   }, [mobileDropdownOpen]);
 
+  const handleMobileDropdownToggle = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setMobileDropdownOpen((prev) => !prev);
+  };
+
   return (
     <nav className="overflow-x-hidden border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
@@ -54,7 +60,7 @@ export default function Navbar() {
             <span className="text-[#D4AF37]">Mall</span>
           </Link>
 
-          <div className="hidden items-center gap-8 text-lg font-semibold text-white/80 lg:flex">
+          <div className="hidden items-center gap-8 text-2xl font-semibold text-white/80 lg:flex">
             {links.map((item) => (
               <Link
                 key={item.label}
@@ -68,44 +74,47 @@ export default function Navbar() {
           </div>
 
           <div className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto px-1 py-1 lg:hidden">
-            {mobilePrimaryLinks.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="shrink-0 rounded-full px-2.5 py-2 text-[11px] font-semibold text-white/90 transition hover:text-[#D4AF37] sm:px-3 sm:text-sm"
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {mobileDropdownLinks.length > 0 && (
-              <div className="relative z-50 shrink-0" data-mobile-nav-menu>
-                <button
-                  type="button"
-                  aria-expanded={mobileDropdownOpen}
-                  aria-haspopup="menu"
-                  onClick={() => setMobileDropdownOpen((prev) => !prev)}
-                  className="rounded-full px-2.5 py-2 text-[11px] font-semibold tracking-[0.02em] text-white/80 transition hover:text-[#D4AF37] sm:px-3 sm:text-sm"
+            <div className="flex max-w-full items-center justify-end gap-1 overflow-x-auto">
+              {mobilePrimaryLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  className="shrink-0 rounded-full px-2.5 py-2 text-base font-semibold text-white/90 transition hover:text-[#D4AF37] sm:px-3 sm:text-lg"
                 >
-                  More
-                </button>
+                  {item.label}
+                </Link>
+              ))}
 
-                {mobileDropdownOpen && (
-                  <div className="absolute right-0 top-full z-[60] mt-2 min-w-[10rem] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
-                    {mobileDropdownLinks.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.to}
-                        onClick={() => setMobileDropdownOpen(false)}
-                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-[#D4AF37]"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+              {mobileDropdownLinks.length > 0 && (
+                <div className="relative z-50 shrink-0" data-mobile-nav-menu>
+                  <button
+                    type="button"
+                    aria-expanded={mobileDropdownOpen}
+                    aria-haspopup="menu"
+                    onMouseDown={(event) => event.stopPropagation()}
+                    onClick={handleMobileDropdownToggle}
+                    className="rounded-full px-2.5 py-2 text-base font-semibold tracking-[0.02em] text-white/80 transition hover:text-[#D4AF37] sm:px-3 sm:text-lg"
+                  >
+                    More
+                  </button>
+
+                  {mobileDropdownOpen && (
+                    <div className="absolute right-0 top-full z-[60] mt-2 min-w-[10rem] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
+                      {mobileDropdownLinks.map((item) => (
+                        <Link
+                          key={item.label}
+                          to={item.to}
+                          onClick={() => setMobileDropdownOpen(false)}
+                          className="block rounded-xl px-3 py-2 text-base font-semibold text-white/80 transition hover:bg-white/10 hover:text-[#D4AF37]"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
