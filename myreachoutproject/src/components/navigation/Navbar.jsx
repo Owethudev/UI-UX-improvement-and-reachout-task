@@ -51,7 +51,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="overflow-x-hidden border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
+    <nav className="relative z-[70] overflow-visible border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
       <PageContainer>
         <div className="flex flex-col gap-3 py-3 sm:gap-3">
@@ -105,7 +105,7 @@ export default function Navbar() {
               ))}
 
               {mobileDropdownLinks.length > 0 && (
-                <div className="relative z-50" data-mobile-nav-menu>
+                <div className="relative z-[90]" data-mobile-nav-menu>
                   <button
                     type="button"
                     aria-expanded={mobileDropdownOpen}
@@ -118,7 +118,7 @@ export default function Navbar() {
                   </button>
 
                   {mobileDropdownOpen && (
-                    <div className="absolute left-0 top-full z-[60] mt-2 w-[min(16rem,calc(100vw-2rem))] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
+                    <div className="absolute left-0 top-full z-[120] mt-2 w-[min(16rem,calc(100vw-2rem))] rounded-2xl border border-white/10 bg-[#1a1a1a] p-2 shadow-[0_18px_55px_rgba(17,17,17,0.12)]">
                       {mobileDropdownLinks.map((item) => (
                         <Link
                           key={item.label}
