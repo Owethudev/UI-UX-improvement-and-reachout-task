@@ -32,8 +32,6 @@ export default function ProductCard({ product }) {
 
   const handleAddToCart = () => {
     addToCart(product, 1);
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    navigate("/cart", { replace: false });
   };
 
   return (

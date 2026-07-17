@@ -57,12 +57,7 @@ export default function Hero() {
               >
                 Explore Deals
               </Link>
-              <Link
-                to="/wishlist"
-                className="inline-flex items-center justify-center rounded-full border border-[#111111] px-7 py-3.5 text-sm font-semibold text-[#111111] transition duration-300 hover:-translate-y-0.5 hover:border-[#D4AF37] hover:bg-[#fff8e8] hover:text-[#111111]"
-              >
-                View Collections
-              </Link>
+              
             </div>
           </div>
 

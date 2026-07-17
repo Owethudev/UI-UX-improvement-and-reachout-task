@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
 import Cart from "./pages/Cart";
@@ -13,6 +14,12 @@ import Wishlist from "./pages/Wishlist";
 import GrandOpeningSignup from "./pages/GrandOpeningSignup";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location.pathname]);
+
   return (
     <MainLayout>
       <Routes>
