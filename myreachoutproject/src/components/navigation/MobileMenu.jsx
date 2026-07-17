@@ -81,7 +81,7 @@ export default function MobileMenu({ open, onClose, items = [] }) {
           <div className="absolute inset-0 bg-[#111111]" />
           <motion.div
             ref={dialogRef}
-            className="relative ml-auto flex h-full w-[88%] max-w-sm flex-col border-l border-black/10 bg-white p-5 shadow-[0_24px_80px_rgba(17,17,17,0.28)]"
+            className="relative ml-auto flex h-screen w-[88%] max-w-sm flex-col border-l border-black/10 bg-white p-5 shadow-[0_24px_80px_rgba(17,17,17,0.28)]"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
@@ -105,7 +105,7 @@ export default function MobileMenu({ open, onClose, items = [] }) {
               </button>
             </div>
 
-            <nav className="mt-8 flex flex-col gap-2 rounded-[1.5rem] bg-white p-3" aria-label="Mobile navigation links">
+            <nav className="mt-8 flex flex-1 flex-col gap-2 overflow-y-auto rounded-[1.5rem] bg-white p-3" aria-label="Mobile navigation links">
               {items.map((item) => (
                 <Link
                   key={item.label}
