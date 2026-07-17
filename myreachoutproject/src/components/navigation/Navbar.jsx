@@ -52,7 +52,7 @@ export default function Navbar() {
                 <span className="text-[#D4AF37]">Mall</span>
               </Link>
 
-              <div className="hidden items-center gap-8 text-2xl font-semibold text-white/80 lg:flex">
+              <div className="hidden items-center gap-8 text-lg font-semibold text-white/80 lg:flex">
                 {links.map((item) => (
                   <Link
                     key={item.label}
