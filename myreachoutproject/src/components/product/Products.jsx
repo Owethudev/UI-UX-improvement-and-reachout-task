@@ -7,14 +7,28 @@ import FilterSidebar from "./FilterSidebar";
 import ProductGrid from "./ProductGrid";
 import SortingBar from "./SortingBar";
 
-const catalogProducts = featuredProducts.map((product, index) => {
-  const category = index % 2 === 0 ? "Mobiles" : index % 3 === 0 ? "Home" : "Gaming";
+const getCategory = (product) => {
+  const title = product.title.toLowerCase();
 
-  return {
-    ...product,
-    category,
-  };
-});
+  if (title.includes("iphone") || title.includes("macbook") || title.includes("laptop")) {
+    return "Mobiles";
+  }
+
+  if (title.includes("playstation") || title.includes("console") || title.includes("gaming")) {
+    return "Gaming";
+  }
+
+  if (title.includes("soccer") || title.includes("treadmill") || title.includes("punching")) {
+    return "Fitness";
+  }
+
+  return "Home";
+};
+
+const catalogProducts = featuredProducts.map((product) => ({
+  ...product,
+  category: getCategory(product),
+}));
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -88,7 +102,7 @@ export default function Products() {
                 ))}
               </div>
             ) : visibleProducts.length ? (
-              <ProductGrid products={visibleProducts} />
+              <ProductGrid products={visibleProducts} initialCount={4} increment={4} />
             ) : (
               <div className="rounded-[2rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
                 <p className="text-lg font-semibold text-[#111111]">No products match these filters.</p>

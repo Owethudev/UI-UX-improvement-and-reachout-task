@@ -1,4 +1,4 @@
-const categories = ["All", "Mobiles", "Gaming", "Home", "Audio"];
+const categories = ["All", "Mobiles", "Gaming", "Home", "Fitness"];
 const priceRanges = ["All", "Under R 10k", "Under R 20k", "Premium"];
 
 export default function FilterSidebar({ activeCategory, onCategoryChange, selectedPrice, onPriceChange, mobile = false, isOpen = true, onClose }) {

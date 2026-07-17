@@ -8,9 +8,27 @@ import SearchSuggestions from "../components/search/SearchSuggestions";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import { featuredProducts } from "../data/featuredProducts";
 
+const getCategory = (product) => {
+  const title = product.title.toLowerCase();
+
+  if (title.includes("iphone") || title.includes("macbook") || title.includes("laptop")) {
+    return "Mobiles";
+  }
+
+  if (title.includes("playstation") || title.includes("console") || title.includes("gaming")) {
+    return "Gaming";
+  }
+
+  if (title.includes("soccer") || title.includes("treadmill") || title.includes("punching")) {
+    return "Fitness";
+  }
+
+  return "Home";
+};
+
 const searchCatalog = featuredProducts.map((product) => ({
   ...product,
-  category: product.title.includes("TV") ? "Home" : product.title.includes("MacBook") ? "Computers" : product.title.includes("iPhone") ? "Mobiles" : "Electronics",
+  category: getCategory(product),
 }));
 
 export default function Search() {
@@ -126,7 +144,7 @@ export default function Search() {
 
           <div className="mt-8">
             {visibleProducts.length ? (
-              <ProductGrid products={visibleProducts} />
+              <ProductGrid products={visibleProducts} initialCount={4} increment={4} />
             ) : (
               <div className="rounded-[2rem] border border-dashed border-black/15 bg-white p-8 text-center shadow-[0_12px_35px_rgba(17,17,17,0.04)]">
                 <p className="text-lg font-semibold text-[#111111]">No products match your search.</p>

@@ -4,7 +4,7 @@
 import { Link } from "react-router-dom";
 
 import PageContainer from "../layout/PageContainer";
-import ProductCard from "../product/ProductCard";
+import ProductGrid from "../product/ProductGrid";
 import { featuredProducts } from "../../data/featuredProducts";
 
 export default function FeaturedProducts() {
@@ -25,11 +25,7 @@ export default function FeaturedProducts() {
           </Link>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <ProductGrid products={featuredProducts} initialCount={4} increment={4} />
       </PageContainer>
     </section>
   );
