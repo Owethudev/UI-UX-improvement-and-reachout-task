@@ -27,7 +27,16 @@ export default function Hero() {
     <section className="bg-[linear-gradient(135deg,#ffffff_0%,#fff9e8_100%)] py-20 sm:py-24 lg:py-28">
       <PageContainer>
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div className="max-w-2xl">
+          <div className="relative max-w-2xl overflow-hidden rounded-[2rem] px-2 py-2 sm:px-4 sm:py-4 lg:overflow-visible lg:px-0 lg:py-0">
+            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[2rem] lg:hidden">
+              <img
+                src={heroImage}
+                alt=""
+                className="h-full w-full scale-[1.15] object-cover opacity-20 blur-[38px]"
+              />
+              <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.5),transparent_65%)]" />
+            </div>
+
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
               Premium Shopping Experience
             </p>
@@ -57,7 +66,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative hidden lg:block">
             <div className="absolute inset-0 -translate-x-4 translate-y-4 rounded-[2rem] bg-[#D4AF37]/20 blur-3xl" />
             <img
               src={heroImage}

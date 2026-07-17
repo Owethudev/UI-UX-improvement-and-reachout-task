@@ -84,7 +84,7 @@ export default function Navbar() {
                   aria-expanded={mobileDropdownOpen}
                   aria-haspopup="menu"
                   onClick={() => setMobileDropdownOpen((prev) => !prev)}
-                  className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:text-[#D4AF37]"
+                  className="rounded-full px-3 py-2 text-base font-semibold tracking-[0.02em] text-white/80 transition hover:text-[#D4AF37]"
                 >
                   More
                 </button>
@@ -109,7 +109,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <Link to="/cart" className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white shadow-none transition hover:-translate-y-0.5 hover:text-[#D4AF37]">
-              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7f7f2] shadow-[0_8px_24px_rgba(17,17,17,0.08)]">
+              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white shadow-[0_8px_24px_rgba(17,17,17,0.08)]">
                 <img src="/src/assets/images/cart-icon.svg" alt="Cart" className="h-5 w-5 object-contain" />
               </span>
               {itemCount > 0 && (
