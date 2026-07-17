@@ -16,8 +16,8 @@ const links = [
   { label: "Cart", to: "/cart" },
 ];
 
-const mobilePrimaryLinks = links.filter((item) => ["Home", "Search", "clothing"].includes(item.label));
-const mobileDropdownLinks = links.filter((item) => !["Home", "Search", "clothing"].includes(item.label));
+const mobilePrimaryLinks = links.filter((item) => ["Home", "Search"].includes(item.label));
+const mobileDropdownLinks = links.filter((item) => !["Home", "Search"].includes(item.label));
 
 export default function Navbar() {
   const { cartItems } = useCart();
@@ -45,11 +45,11 @@ export default function Navbar() {
   }, [mobileDropdownOpen]);
 
   return (
-    <nav className="border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
+    <nav className="overflow-x-hidden border-b border-black/10 bg-[#222222] text-white shadow-[0_10px_30px_rgba(17,17,17,0.12)]">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
       <PageContainer>
-        <div className="flex h-20 items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2 text-lg font-black tracking-[0.24em] uppercase text-white">
+        <div className="flex min-h-20 items-center justify-between gap-2 py-3 sm:gap-3">
+          <Link to="/" className="flex shrink-0 items-center gap-2 text-base font-black tracking-[0.24em] uppercase text-white sm:text-lg">
             <span>Mega</span>
             <span className="text-[#D4AF37]">Mall</span>
           </Link>
@@ -67,25 +67,25 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex flex-1 items-center justify-end gap-2 overflow-visible lg:hidden">
+          <div className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto px-1 py-1 lg:hidden">
             {mobilePrimaryLinks.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-white/90 transition hover:text-[#D4AF37]"
+                className="shrink-0 rounded-full px-2.5 py-2 text-[11px] font-semibold text-white/90 transition hover:text-[#D4AF37] sm:px-3 sm:text-sm"
               >
                 {item.label}
               </Link>
             ))}
 
             {mobileDropdownLinks.length > 0 && (
-              <div className="relative z-50" data-mobile-nav-menu>
+              <div className="relative z-50 shrink-0" data-mobile-nav-menu>
                 <button
                   type="button"
                   aria-expanded={mobileDropdownOpen}
                   aria-haspopup="menu"
                   onClick={() => setMobileDropdownOpen((prev) => !prev)}
-                  className="rounded-full px-3 py-2 text-base font-semibold tracking-[0.02em] text-white/80 transition hover:text-[#D4AF37]"
+                  className="rounded-full px-2.5 py-2 text-[11px] font-semibold tracking-[0.02em] text-white/80 transition hover:text-[#D4AF37] sm:px-3 sm:text-sm"
                 >
                   More
                 </button>
@@ -108,14 +108,14 @@ export default function Navbar() {
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <Link
               to="/cart"
               onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
-              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white shadow-none transition hover:-translate-y-0.5 hover:text-[#D4AF37]"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white shadow-none transition hover:-translate-y-0.5 hover:text-[#D4AF37] sm:h-11 sm:w-11"
             >
-              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white shadow-[0_8px_24px_rgba(17,17,17,0.08)]">
-                <img src={cartIcon} alt="Cart" className="h-5 w-5 object-contain" />
+              <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white shadow-[0_8px_24px_rgba(17,17,17,0.08)] sm:h-10 sm:w-10">
+                <img src={cartIcon} alt="Cart" className="h-4 w-4 object-contain sm:h-5 sm:w-5" />
               </span>
               {itemCount > 0 && (
                 <span className={`absolute -right-1 -top-1 flex min-w-5 items-center justify-center rounded-full bg-[#D4AF37] px-1.5 py-0.5 text-[10px] font-semibold text-[#111111] ${pulseCart ? "animate-bounce" : ""}`}>
