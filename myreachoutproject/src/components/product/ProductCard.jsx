@@ -83,18 +83,18 @@ function ProductCard({ product }) {
           </div>
         </div>
 
-        <div className={`mt-4 overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}`}>
-          <div className="flex flex-wrap justify-end gap-2">
+        <div className={`mt-4 overflow-visible transition-[max-height,opacity] duration-300 ${isExpanded ? "max-h-28 opacity-100" : "max-h-0 opacity-0"}`}>
+          <div className="flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-2">
             <Button
               variant="gold"
-              className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5"
+              className="w-full rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5 sm:w-auto"
               onClick={(event) => handleActionClick(event, handleAddToCart)}
             >
               Add to cart
             </Button>
             <Button
               variant="outline"
-              className="rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5"
+              className="w-full rounded-full px-3.5 py-2 text-sm hover:-translate-y-0.5 sm:w-auto"
               onClick={(event) => handleActionClick(event, handleBuyNow)}
             >
               Buy now

@@ -21,7 +21,7 @@ function ProductGrid({ products, initialCount = 4, increment = 4 }) {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8">
         {visibleProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
