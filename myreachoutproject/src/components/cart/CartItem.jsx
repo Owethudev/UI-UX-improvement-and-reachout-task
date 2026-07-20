@@ -1,3 +1,4 @@
+import OptimizedImage from "../ui/OptimizedImage";
 import { useCart } from "../../context/CartContext";
 
 export default function CartItem({ item }) {
@@ -5,7 +6,7 @@ export default function CartItem({ item }) {
 
   return (
     <div className="flex flex-col gap-4 rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-[0_16px_45px_rgba(17,17,17,0.05)] sm:flex-row sm:items-center">
-      <img src={item.image} alt={item.title} className="h-24 w-full rounded-[1rem] object-cover sm:h-24 sm:w-24" />
+      <OptimizedImage src={item.image} alt={item.title} width={120} height={120} loading="lazy" className="h-24 w-full rounded-[1rem] object-cover sm:h-24 sm:w-24" />
 
       <div className="flex-1">
         <div className="flex flex-wrap items-start justify-between gap-3">

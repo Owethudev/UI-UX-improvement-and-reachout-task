@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
+import OptimizedImage from "../ui/OptimizedImage";
 import Rating from "../ui/Rating";
 import { useCart } from "../../context/CartContext";
 
@@ -40,11 +41,13 @@ function ProductCard({ product }) {
       className={`group cursor-pointer overflow-hidden rounded-[1.75rem] border border-black/10 bg-white shadow-[0_18px_55px_rgba(17,17,17,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(17,17,17,0.12)] motion-safe:transform-gpu ${isExpanded ? "ring-2 ring-[#D4AF37]/40" : ""}`}
     >
       <div className="relative">
-        <img
+        <OptimizedImage
           src={product.image}
           alt={product.title}
           loading="lazy"
           decoding="async"
+          width={800}
+          height={600}
           className="aspect-[4/3] w-full object-cover transition duration-700 motion-safe:group-hover:scale-105"
         />
 

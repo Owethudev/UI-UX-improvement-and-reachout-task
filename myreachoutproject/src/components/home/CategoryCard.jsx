@@ -3,6 +3,8 @@
 
 import { memo } from "react";
 
+import OptimizedImage from "../ui/OptimizedImage";
+
 function CategoryCard({ title, description, image, className = "", isCenter = false, onClick = () => {} }) {
   return (
     <button
@@ -13,11 +15,13 @@ function CategoryCard({ title, description, image, className = "", isCenter = fa
       {isCenter && (
         <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.18),transparent_70%)]" />
       )}
-      <img
+      <OptimizedImage
         src={image}
         alt={title}
         loading="lazy"
         decoding="async"
+        width={800}
+        height={1000}
         className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-110"
       />
 

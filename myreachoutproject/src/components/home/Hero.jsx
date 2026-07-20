@@ -5,12 +5,26 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import PageContainer from "../layout/PageContainer";
+import OptimizedImage from "../ui/OptimizedImage";
 import heroImage from "../../assets/images/hero/hero-banner.webp";
 
 export default function Hero() {
   // I keep a reference to the hero image so I can update its transform without forcing a React rerender.
   const imageRef = useRef(null);
   const frameRef = useRef(0);
+
+  useEffect(() => {
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+    preloadLink.href = heroImage;
+    preloadLink.fetchPriority = "high";
+    document.head.appendChild(preloadLink);
+
+    return () => {
+      preloadLink.remove();
+    };
+  }, []);
 
   // I use this effect to make the hero image feel slightly parallax-like as I scroll, while keeping the update efficient.
   useEffect(() => {
@@ -48,9 +62,13 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div className="relative max-w-2xl overflow-hidden rounded-[2rem] px-2 py-2 sm:px-4 sm:py-4 lg:overflow-visible lg:px-0 lg:py-0">
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[2rem] lg:hidden">
-              <img
+              <OptimizedImage
                 src={heroImage}
                 alt=""
+                width={1600}
+                height={1200}
+                loading="eager"
+                priority={false}
                 className="h-full w-full scale-[1.15] object-cover opacity-20 blur-[38px]"
               />
               <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.5),transparent_65%)]" />
@@ -82,13 +100,18 @@ export default function Hero() {
 
           <div className="relative hidden lg:block">
             <div className="absolute inset-0 -translate-x-4 translate-y-4 rounded-[2rem] bg-[#D4AF37]/20 blur-3xl" />
-            <img
+            <OptimizedImage
               ref={imageRef}
               src={heroImage}
               alt="Premium electronics display"
               loading="eager"
               decoding="async"
               fetchPriority="high"
+              priority
+              srcSet={`${heroImage} 1600w`}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              width={1600}
+              height={1200}
               style={{ willChange: "transform" }}
               className="relative w-full rounded-[2rem] border border-black/10 object-cover shadow-[0_40px_120px_rgba(17,17,17,0.12)] transition-transform duration-200 ease-out"
             />

@@ -6,6 +6,7 @@ import samsungLogo from "../../assets/images/brands/samsung.svg";
 import sonyLogo from "../../assets/images/brands/sony.svg";
 
 import PageContainer from "../layout/PageContainer";
+import OptimizedImage from "../ui/OptimizedImage";
 
 const brands = [
   { name: "Apple", logo: appleLogo },
@@ -27,7 +28,7 @@ export default function Brands() {
                 key={`${brand.name}-${index}`}
                 className="flex min-w-[150px] flex-shrink-0 items-center justify-center rounded-[1.25rem] border border-black/10 bg-[#f7f7f2] px-6 py-4 sm:min-w-[180px]"
               >
-                <img src={brand.logo} alt={brand.name} className="h-8 w-auto object-contain" />
+                <OptimizedImage src={brand.logo} alt={brand.name} width={180} height={48} loading="lazy" className="h-8 w-auto object-contain" />
               </div>
             ))}
           </div>

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PageContainer from "../layout/PageContainer";
+import OptimizedImage from "../ui/OptimizedImage";
 import CategoryCard from "./CategoryCard";
 import { categories } from "../../data/categories";
 
@@ -53,9 +54,12 @@ export default function Categories() {
               key={`${item.id}-${index}`}
               className="relative h-72 min-w-[540px] shrink-0 overflow-hidden rounded-[1.5rem] border border-white/20 bg-white/70 shadow-[0_12px_40px_rgba(17,17,17,0.10)] backdrop-blur-md sm:h-88 sm:min-w-[660px]"
             >
-              <img
+              <OptimizedImage
                 src={item.image}
                 alt=""
+                width={900}
+                height={600}
+                loading="lazy"
                 className="h-full w-full scale-110 object-cover object-center blur-[2px] brightness-75"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
